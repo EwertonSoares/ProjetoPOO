@@ -5,6 +5,7 @@
  */
 package blueFire.controller;
 
+import blueFire.Confirma;
 import blueFire.model.domain.impl.Cliente;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -48,12 +50,10 @@ public class DataController implements Initializable {
     }
 
     @FXML
-    public void continuar() {
+    public void continuar() throws Exception {
         Period periodo = Period.between(this.pegarDataInicio(), this.pegarDataFim());
         int dias = periodo.getDays();
-
-        this.cliente.fazerReserva(DataController.idUsuario, 
-                DataController.idVeiculo, dias, this.dpInicio.getValue().toString());
+        this.abrirTelaDeConfirmacao(dias);
     }
 
     @FXML
@@ -89,6 +89,17 @@ public class DataController implements Initializable {
 
     public Long getIdVeiculo() {
         return idVeiculo;
+    }
+
+    private void abrirTelaDeConfirmacao(int dias) throws Exception {
+        
+        String dataInicio = this.dpInicio.getValue().toString();
+        String dataFim = this.dpFim.getValue().toString();
+        
+        Confirma confirma = new Confirma(this.idUsuario, this.idVeiculo, dias, dataInicio, dataFim);
+        
+        confirma.start(new Stage());
+
     }
 
 }
