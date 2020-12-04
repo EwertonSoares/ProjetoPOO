@@ -52,8 +52,11 @@ public class Cliente extends Pessoa implements UsuarioLogado {
         return logar.checkarLoginESenha(email, senha, "user");
     }
 
-    public void fazerReserva(Long idUsuario, Long idVeiculo, int qtd, String dataInicio) {
-        this.clienteDao.reservarVeiculo(idUsuario, idVeiculo, qtd, dataInicio);
+    public boolean fazerReserva(Long idUsuario, Long idVeiculo, int qtd, String dataInicio) {
+        boolean done;
+        done = this.clienteDao.reservarVeiculo(idUsuario, idVeiculo, qtd, dataInicio);
+        
+        return done;
     }
     
 }

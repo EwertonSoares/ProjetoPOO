@@ -5,11 +5,14 @@
  */
 package blueFire.controller;
 
+import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
+import blueFire.utils.Utils;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 /**
@@ -59,8 +62,23 @@ public class ConfirmaController implements Initializable {
         this.lblDtIni.setText(dataInicio);
         this.lblDtFim.setText(dataFim);
         this.lblDias.setText(String.valueOf(qtdDias));
-        this.lblValorDia.setText(""+veiculo.getValorLocacao());
-        this.lblValorTotal.setText(""+veiculo.getValorLocacao() * qtdDias);
+        this.lblValorDia.setText("" + veiculo.getValorLocacao());
+        this.lblValorTotal.setText("" + veiculo.getValorLocacao() * qtdDias);
+    }
+
+    @FXML
+    private void confirma() {
+        Cliente cliente = new Cliente();
+        boolean reservado = cliente.fazerReserva(idUsuario, idUsuario, qtdDias, dataInicio);
+
+        Utils utils = new Utils();
+        if (reservado) {
+            utils.showAlert("Suacesso", "Veiculo reservado!",
+                    "O veiculo foi reservado com sucesso", Alert.AlertType.INFORMATION);
+        } else {
+            utils.showAlert("Erro", "Veiculo não pode \nser reservado!",
+                    "O veiculo não foi reservado,\naSSSlgo inesperado ocorreu!", Alert.AlertType.ERROR);
+        }
     }
 
     public static void setIdUsuario(Long idUsuario) {
