@@ -24,6 +24,10 @@ public class Veiculos extends Application {
         Veiculos.idUsuario = idUsuario;
     }
 
+    public Veiculos() {
+
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/blueFire/view/FXML_VEICULOS.fxml"));

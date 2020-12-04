@@ -8,25 +8,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="275.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blueFire.controller.DataController">
    <children>
-      <Pane layoutX="3.0" layoutY="28.0" prefHeight="499.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
+      <Pane layoutX="3.0" layoutY="3.0" prefHeight="524.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
          <children>
-            <Button layoutX="69.0" layoutY="324.0" mnemonicParsing="false" onAction="#continuar" prefHeight="43.0" prefWidth="133.0" text="Confirmar" />
-            <Button fx:id="btnFechar" layoutX="247.0" layoutY="-29.0" mnemonicParsing="false" onAction="#fechar" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px;">
-               <graphic>
-                  <ImageView fitHeight="11.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../src/baseline_close_black_18dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
+            <Button layoutX="69.0" layoutY="324.0" mnemonicParsing="false" onAction="#continuar" prefHeight="43.0" prefWidth="133.0" style="-fx-cursor: hand;" text="Confirmar" />
             <ImageView fitHeight="37.0" fitWidth="169.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/logo.png" />

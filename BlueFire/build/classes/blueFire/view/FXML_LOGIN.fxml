@@ -10,11 +10,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="275.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blueFire.controller.LoginController">
    <children>
-      <Pane layoutX="3.0" layoutY="29.0" prefHeight="499.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
+      <Pane layoutX="3.0" layoutY="3.0" prefHeight="525.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
          <children>
             <TextField fx:id="txtEmail" layoutX="33.0" layoutY="262.0" prefHeight="37.0" prefWidth="202.0" style="-fx-border-color: black;" />
             <Button fx:id="btnEntrar" layoutX="161.0" layoutY="394.0" mnemonicParsing="false" onAction="#logar" prefHeight="37.0" prefWidth="74.0" text="Entrar" />
@@ -22,22 +21,10 @@
             <Hyperlink fx:id="linkEsqueceu" layoutX="110.0" layoutY="359.0" prefHeight="24.0" prefWidth="131.0" text="Esqueceu a senha" textFill="#131413" underline="true" />
             <Label layoutX="36.0" layoutY="246.0" prefHeight="16.0" prefWidth="81.0" text="Email" />
             <Label layoutX="36.0" layoutY="307.0" prefHeight="16.0" prefWidth="81.0" text="Senha" />
-            <ImageView fitHeight="148.0" fitWidth="247.0" layoutX="61.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="148.0" fitWidth="247.0" layoutX="60.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/perfil.png" />
                </image></ImageView>
-            <Button fx:id="btnFechar" layoutX="246.0" layoutY="-28.0" mnemonicParsing="false" onAction="#fechar" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px;">
-               <graphic>
-                  <ImageView fitHeight="11.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../src/baseline_close_black_18dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
             <ImageView fitHeight="37.0" fitWidth="169.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/logo.png" />

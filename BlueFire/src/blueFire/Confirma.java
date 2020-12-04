@@ -24,6 +24,7 @@ public class Confirma extends Application {
     private final int qtdDias;
     private final String dataFim;
     private final Veiculo veiculo;
+    private Stage stageAtual;
 
     public Confirma(Long idUsuario, Veiculo veiculo, int dias, String dataInicio, String dataFim) {
         this.idUsuario = idUsuario;
@@ -48,6 +49,8 @@ public class Confirma extends Application {
 
         stage.setScene(scene);
         stage.show();
+
+        this.stageAtual = stage;
     }
 
     /**

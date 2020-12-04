@@ -7,9 +7,9 @@ package blueFire.model.dao;
 
 import blueFire.model.database.ConnectionSingleton;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

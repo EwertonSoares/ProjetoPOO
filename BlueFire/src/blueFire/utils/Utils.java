@@ -20,11 +20,6 @@ public class Utils {
         stage.close();
     }
 
-    public void recarregarJanela(Button botao) {
-        Stage stage = (Stage) botao.getScene().getWindow();
-        stage.close();
-    }
-
     public void showAlert(String title, String header, String content, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -32,5 +27,16 @@ public class Utils {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    public String converterDataSringParaDate(String strDate) {
+        if (strDate == null) {
+            return null;
+        }
+
+        String[] result = strDate.split("-");
+        String date = result[2].concat("-").concat(result[1]).concat("-").concat(result[0]);
+
+        return date;
     }
 }

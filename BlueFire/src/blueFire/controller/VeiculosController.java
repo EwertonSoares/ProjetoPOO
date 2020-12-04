@@ -6,6 +6,7 @@
 package blueFire.controller;
 
 import blueFire.InserirDatas;
+import blueFire.Veiculos;
 import blueFire.model.dao.VeiculoDAO;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
@@ -27,17 +28,19 @@ import javafx.stage.Stage;
  * @author CIANDT\ewerton
  */
 public class VeiculosController implements Initializable {
+
     VeiculoDAO veiculoDAO = new VeiculoDAO();
     Utils utils = new Utils();
     Cliente cliente;
 
-    private ObservableList<Veiculo> oblVeiculos;
-
     @FXML
     private Button btnFechar;
-
     @FXML
     private ListView<Veiculo> lvVeiculos;
+    @FXML
+    private Button btnRecarregar;
+
+    private ObservableList<Veiculo> oblVeiculos;
     private static Long idUsuario;
 
     /**
@@ -57,17 +60,26 @@ public class VeiculosController implements Initializable {
     @FXML
     public void irParaProximaPagina() throws Exception {
         Veiculo veiculo = (Veiculo) this.lvVeiculos.getSelectionModel().getSelectedItem();
-        
+
         InserirDatas inserirDatas = new InserirDatas(this.idUsuario, veiculo);
         inserirDatas.start(new Stage());
-     }
-    
+    }
+
     @FXML
     public void fechar() {
         utils.fecharJanela(this.btnFechar);
     }
 
+    @FXML
+    public void recarregarJanela() throws Exception {
+        Stage stage = (Stage) this.btnRecarregar.getScene().getWindow();
+        stage.close();
+
+        Veiculos Veiculo = new Veiculos();
+        Veiculo.start(new Stage());
+    }
+
     public void setarIdUsuario(Long idUsuario) {
         VeiculosController.idUsuario = idUsuario;
-    }   
+    }
 }

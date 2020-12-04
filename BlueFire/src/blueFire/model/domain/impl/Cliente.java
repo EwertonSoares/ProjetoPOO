@@ -8,14 +8,14 @@ package blueFire.model.domain.impl;
 import blueFire.model.dao.ClienteDAO;
 import blueFire.model.dao.LoginDAO;
 import blueFire.model.domain.UsuarioLogado;
-import java.util.Date;
+import blueFire.utils.Utils;
 
 /**
  *
  * @author CIANDT\ewerton
  */
 public class Cliente extends Pessoa implements UsuarioLogado {
-    
+
     private ClienteDAO clienteDao = new ClienteDAO();
 
     private String email;
@@ -27,7 +27,7 @@ public class Cliente extends Pessoa implements UsuarioLogado {
     }
 
     public Cliente() {
-        
+
     }
 
     public String getEmail() {
@@ -45,7 +45,7 @@ public class Cliente extends Pessoa implements UsuarioLogado {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
     @Override
     public boolean logar() {
         LoginDAO logar = new LoginDAO();
@@ -53,10 +53,12 @@ public class Cliente extends Pessoa implements UsuarioLogado {
     }
 
     public boolean fazerReserva(Long idUsuario, Long idVeiculo, int qtd, String dataInicio) {
+        Utils utils = new Utils();
+
         boolean done;
         done = this.clienteDao.reservarVeiculo(idUsuario, idVeiculo, qtd, dataInicio);
-        
+
         return done;
     }
-    
+
 }
