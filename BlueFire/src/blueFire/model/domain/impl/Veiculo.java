@@ -71,7 +71,7 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public double getValorLocacao() {
+    public float getValorLocacao() {
         return valorLocacao;
     }
 

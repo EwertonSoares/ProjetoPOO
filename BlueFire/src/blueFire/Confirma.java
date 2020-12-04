@@ -36,11 +36,11 @@ public class Confirma extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         ConfirmaController confirmaController = new ConfirmaController();
-        confirmaController.setIdUsuario(this.idUsuario);
-        confirmaController.setVeiculo(this.veiculo);
-        confirmaController.setQtdDias(this.qtdDias);
-        confirmaController.setDataInicio(this.dataInicio);
-        confirmaController.setDataFim(this.dataFim);
+        ConfirmaController.setIdUsuario(this.idUsuario);
+        ConfirmaController.setVeiculo(this.veiculo);
+        ConfirmaController.setQtdDias(this.qtdDias);
+        ConfirmaController.setDataInicio(this.dataInicio);
+        ConfirmaController.setDataFim(this.dataFim);
 
         Parent root = FXMLLoader.load(getClass().getResource("/blueFire/view/FXML_CONFIRMAR.fxml"));
 

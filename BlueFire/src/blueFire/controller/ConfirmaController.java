@@ -59,8 +59,8 @@ public class ConfirmaController implements Initializable {
         this.lblDtIni.setText(dataInicio);
         this.lblDtFim.setText(dataFim);
         this.lblDias.setText(String.valueOf(qtdDias));
-        this.lblValorDia.setText(String.valueOf(veiculo.getValorLocacao()));
-        this.lblValorTotal.setText(String.valueOf(veiculo.getValorLocacao() * qtdDias));
+        this.lblValorDia.setText(""+veiculo.getValorLocacao());
+        this.lblValorTotal.setText(""+veiculo.getValorLocacao() * qtdDias);
     }
 
     public static void setIdUsuario(Long idUsuario) {
@@ -83,7 +83,5 @@ public class ConfirmaController implements Initializable {
     public static void setVeiculo(Veiculo veiculo) {
         ConfirmaController.veiculo = veiculo;
     }
-    
-    
 
 }
