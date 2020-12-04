@@ -5,7 +5,6 @@
  */
 package blueFire.controller;
 
-import blueFire.Confirma;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
 import blueFire.utils.Utils;
@@ -88,7 +87,8 @@ public class ConfirmaController implements Initializable {
         }
         
     }
-
+    
+    
     public static void setIdUsuario(Long idUsuario) {
         ConfirmaController.idUsuario = idUsuario;
 
