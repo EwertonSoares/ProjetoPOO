@@ -10,7 +10,6 @@ import blueFire.model.dao.VeiculoDAO;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
 import blueFire.utils.Utils;
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -19,7 +18,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -60,7 +58,7 @@ public class VeiculosController implements Initializable {
     public void irParaProximaPagina() throws Exception {
         Veiculo veiculo = (Veiculo) this.lvVeiculos.getSelectionModel().getSelectedItem();
         
-        InserirDatas inserirDatas = new InserirDatas(this.idUsuario, veiculo.getId());
+        InserirDatas inserirDatas = new InserirDatas(this.idUsuario, veiculo);
         inserirDatas.start(new Stage());
      }
     

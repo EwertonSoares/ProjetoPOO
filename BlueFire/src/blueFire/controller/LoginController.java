@@ -32,7 +32,6 @@ import javafx.stage.Stage;
  */
 public class LoginController implements Initializable {
 
-    UtilsDAO utilsDAO = new UtilsDAO();
     Utils utils = new Utils();
     LoginFacade facade = new LoginFacade();
 
@@ -93,6 +92,7 @@ public class LoginController implements Initializable {
     }
 
     public Long pegarIdUsuario() {
+        UtilsDAO utilsDAO = new UtilsDAO();
         Long id = utilsDAO.pegarIdUsuario(this.txtEmail.getText());
         return id;
     }

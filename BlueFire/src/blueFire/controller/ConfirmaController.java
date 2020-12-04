@@ -5,6 +5,7 @@
  */
 package blueFire.controller;
 
+import blueFire.model.domain.impl.Veiculo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -20,18 +21,25 @@ public class ConfirmaController implements Initializable {
 
     @FXML
     private Label lblDtIni;
-
     @FXML
     private Label lblDtFim;
-
     @FXML
     private Label lblDias;
+    @FXML
+    private Label lblNome;
+    @FXML
+    private Label lblPlaca;
+    @FXML
+    private Label lblCor;
+    @FXML
+    private Label lblAno;
+
 
     private static Long idUsuario;
-    private static Long idVeiculo;
     private static int qtdDias;
     private static String dataInicio;
     private static String dataFim;
+    private static Veiculo veiculo;
 
     /**
      * Initializes the controller class.
@@ -42,6 +50,10 @@ public class ConfirmaController implements Initializable {
     }
     
     private void getValues() {
+        this.lblNome.setText(veiculo.getNome());
+        this.lblPlaca.setText(veiculo.getPlaca());
+        this.lblCor.setText(veiculo.getCor());
+        this.lblAno.setText(veiculo.getAno().toString());
         this.lblDtIni.setText(dataInicio);
         this.lblDtFim.setText(dataFim);
         this.lblDias.setText("" + qtdDias);
@@ -50,10 +62,6 @@ public class ConfirmaController implements Initializable {
     public static void setIdUsuario(Long idUsuario) {
         ConfirmaController.idUsuario = idUsuario;
 
-    }
-
-    public static void setIdVeiculo(Long idVeiculo) {
-        ConfirmaController.idVeiculo = idVeiculo;
     }
 
     public static void setQtdDias(int qtdDias) {
@@ -66,6 +74,10 @@ public class ConfirmaController implements Initializable {
 
     public static void setDataFim(String dataFim) {
         ConfirmaController.dataFim = dataFim;
+    }
+
+    public static void setVeiculo(Veiculo veiculo) {
+        ConfirmaController.veiculo = veiculo;
     }
 
 }

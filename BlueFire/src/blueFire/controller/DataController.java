@@ -7,6 +7,7 @@ package blueFire.controller;
 
 import blueFire.Confirma;
 import blueFire.model.domain.impl.Cliente;
+import blueFire.model.domain.impl.Veiculo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -36,7 +37,7 @@ public class DataController implements Initializable {
     Cliente cliente = new Cliente();
 
     private static Long idUsuario;
-    private static Long idVeiculo;
+    private static Veiculo veiculo;
 
     /**
      * Initializes the controller class.
@@ -79,27 +80,26 @@ public class DataController implements Initializable {
         this.idUsuario = idUsuario;
     }
 
-    public void setIdVeiculo(Long idVeiculo) {
-        this.idVeiculo = idVeiculo;
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
     public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public Long getIdVeiculo() {
-        return idVeiculo;
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
-
+    
     private void abrirTelaDeConfirmacao(int dias) throws Exception {
-        
+
         String dataInicio = this.dpInicio.getValue().toString();
         String dataFim = this.dpFim.getValue().toString();
-        
-        Confirma confirma = new Confirma(this.idUsuario, this.idVeiculo, dias, dataInicio, dataFim);
-        
+
+        Confirma confirma = new Confirma(this.idUsuario, this.getVeiculo(), dias, dataInicio, dataFim);
+
         confirma.start(new Stage());
 
     }
-
 }

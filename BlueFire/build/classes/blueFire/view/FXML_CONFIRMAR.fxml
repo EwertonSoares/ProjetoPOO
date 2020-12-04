@@ -8,13 +8,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="275.0" style="-fx-background-color: darkblue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="blueFire.controller.ConfirmaController">
+<AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="275.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blueFire.controller.ConfirmaController">
    <children>
       <Pane layoutX="4.0" layoutY="30.0" prefHeight="499.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
          <children>
-            <Button layoutX="68.0" layoutY="414.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="133.0" text="Confirmar" />
-            <Button fx:id="btnFechar" layoutX="247.0" layoutY="-29.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px;">
+            <Button layoutX="68.0" layoutY="414.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="133.0" style="-fx-cursor: hand;" text="Confirmar" />
+            <Button fx:id="btnFechar" layoutX="247.0" layoutY="-29.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px; -fx-cursor: hand;">
                <graphic>
                   <ImageView fitHeight="11.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -31,12 +30,20 @@
                   <Image url="@../src/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="11.0" layoutY="100.0" prefHeight="16.0" prefWidth="154.0" text="Data inicio da locação: " />
-            <Label layoutX="11.0" layoutY="135.0" prefHeight="16.0" prefWidth="146.0" text="Data fim da locação: " />
-            <Label layoutX="10.0" layoutY="171.0" prefHeight="16.0" prefWidth="133.0" text="Quantidade de dias:" />
-            <Label fx:id="lblDtIni" layoutX="168.0" layoutY="100.0" prefHeight="16.0" prefWidth="91.0" />
-            <Label fx:id="lblDtFim" layoutX="165.0" layoutY="135.0" prefHeight="16.0" prefWidth="91.0" />
-            <Label fx:id="lblDias" layoutX="164.0" layoutY="170.0" prefHeight="16.0" prefWidth="91.0" />
+            <Label layoutX="11.0" layoutY="234.0" prefHeight="16.0" prefWidth="154.0" text="Data inicio da locação: " />
+            <Label layoutX="11.0" layoutY="273.0" prefHeight="16.0" prefWidth="146.0" text="Data fim da locação: " />
+            <Label layoutX="10.0" layoutY="311.0" prefHeight="16.0" prefWidth="133.0" text="Quantidade de dias:" />
+            <Label fx:id="lblDtIni" layoutX="174.0" layoutY="234.0" prefHeight="16.0" prefWidth="91.0" />
+            <Label fx:id="lblDtFim" layoutX="174.0" layoutY="273.0" prefHeight="16.0" prefWidth="91.0" />
+            <Label fx:id="lblDias" layoutX="174.0" layoutY="310.0" prefHeight="16.0" prefWidth="91.0" />
+            <Label layoutX="9.0" layoutY="91.0" prefHeight="16.0" prefWidth="146.0" text="Veiculo" />
+            <Label fx:id="lblNome" layoutX="175.0" layoutY="91.0" prefHeight="16.0" prefWidth="91.0" />
+            <Label layoutX="9.0" layoutY="128.0" prefHeight="16.0" prefWidth="146.0" text="Placa:" />
+            <Label fx:id="lblPlaca" layoutX="175.0" layoutY="128.0" prefHeight="16.0" prefWidth="91.0" />
+            <Label layoutX="10.0" layoutY="166.0" prefHeight="16.0" prefWidth="146.0" text="Cor:" />
+            <Label fx:id="lblCor" layoutX="174.0" layoutY="166.0" prefHeight="16.0" prefWidth="91.0" />
+            <Label layoutX="10.0" layoutY="201.0" prefHeight="16.0" prefWidth="146.0" text="Ano:" />
+            <Label fx:id="lblAno" layoutX="174.0" layoutY="201.0" prefHeight="16.0" prefWidth="91.0" />
          </children>
       </Pane>
    </children>
