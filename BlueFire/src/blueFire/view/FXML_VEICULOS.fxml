@@ -12,7 +12,7 @@
    <children>
       <Pane layoutX="3.0" layoutY="28.0" prefHeight="499.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
          <children>
-            <Button fx:id="btnFechar" layoutX="246.0" layoutY="-28.0" mnemonicParsing="false" onAction="#fechar" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px;">
+            <Button fx:id="btnFechar" layoutX="246.0" layoutY="-28.0" mnemonicParsing="false" onAction="#fecharJanela" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px; -fx-cursor: hand;">
                <graphic>
                   <ImageView fitHeight="11.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +30,7 @@
                </image>
             </ImageView>
             <ListView fx:id="lvVeiculos" layoutX="11.0" layoutY="66.0" prefHeight="367.0" prefWidth="247.0" />
-            <Button layoutX="152.0" layoutY="440.0" mnemonicParsing="false" onAction="#irParaProximaPagina" prefHeight="37.0" prefWidth="106.0" text="Continuar" />
+            <Button layoutX="152.0" layoutY="440.0" mnemonicParsing="false" onAction="#irParaProximaPagina" prefHeight="37.0" prefWidth="106.0" style="-fx-cursor: hand;" text="Continuar" />
          </children>
       </Pane>
    </children>

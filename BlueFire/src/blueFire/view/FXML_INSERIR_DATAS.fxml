@@ -14,8 +14,8 @@
    <children>
       <Pane layoutX="3.0" layoutY="28.0" prefHeight="499.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
          <children>
-            <Button layoutX="69.0" layoutY="324.0" mnemonicParsing="false" onAction="#continuar" prefHeight="43.0" prefWidth="133.0" text="Confirmar" />
-            <Button fx:id="btnFechar" layoutX="247.0" layoutY="-29.0" mnemonicParsing="false" onAction="#fechar" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px;">
+            <Button layoutX="69.0" layoutY="324.0" mnemonicParsing="false" onAction="#continuar" prefHeight="43.0" prefWidth="133.0" style="-fx-cursor: hand;" text="Confirmar" />
+            <Button fx:id="btnFechar" layoutX="247.0" layoutY="-29.0" mnemonicParsing="false" onAction="#fechar" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50px; -fx-cursor: hand;">
                <graphic>
                   <ImageView fitHeight="11.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>

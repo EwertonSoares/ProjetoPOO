@@ -71,52 +71,5 @@ public class VeiculosController implements Initializable {
 
     public void setarIdUsuario(Long idUsuario) {
         VeiculosController.idUsuario = idUsuario;
-    }
-
-    /**
-     * FXML Controller class
-     *
-     * @author CIANDT\ewerton
-     */
-    public static class InserirDataController implements Initializable {
-
-        Cliente cliente;
-        Utils utils;
-        @FXML
-        private DatePicker dpIni;
-        @FXML
-        private DatePicker dpFim;
-        @FXML
-        private Button btnConfirmar;
-        private final Long idUsuario;
-        private final Long idVeiculo;
-
-        public InserirDataController(Long idUsuario, Long idVeiculo) {
-            super();
-            this.idUsuario = idUsuario;
-            this.idVeiculo = idVeiculo;
-        }
-
-        /**
-         * Initializes the controller class.
-         * @param url
-         * @param rb
-         */
-        @Override
-        public void initialize(URL url, ResourceBundle rb) {
-            // TODO
-        }
-
-        @FXML
-        void confirmar(ActionEvent event) {
-        }
-
-        @FXML
-        void pegarDataFim(ActionEvent event) {
-        }
-
-        @FXML
-        void pegarDataIni(ActionEvent event) {
-        }
-    }
+    }   
 }
