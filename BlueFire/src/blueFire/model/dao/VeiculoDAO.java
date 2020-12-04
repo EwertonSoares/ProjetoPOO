@@ -32,7 +32,7 @@ public class VeiculoDAO {
 
         try {
 
-            stmt = conexao.prepareStatement("SELECT placa, ano, cor, idVeiculo, nome "
+            stmt = conexao.prepareStatement("SELECT placa, ano, cor, idVeiculo, valorLocacao, nome "
                     + "FROM veiculo "
                     + "WHERE dataLocacao is NULL");
 
@@ -44,8 +44,9 @@ public class VeiculoDAO {
                 String nome = result.getString("nome");
                 String cor = result.getString("cor");
                 Long id = result.getLong("idVeiculo");
+                float valorLocacao = result.getFloat("valorLocacao");
 
-                Veiculo veiculo = new Veiculo(placa, ano, nome, cor, id);
+                Veiculo veiculo = new Veiculo(placa, ano, nome, cor, id, valorLocacao);
 
                 lista.add(veiculo);
             }

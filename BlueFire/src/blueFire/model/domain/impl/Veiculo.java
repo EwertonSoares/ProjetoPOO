@@ -16,17 +16,19 @@ public class Veiculo {
     private Long ano;
     private String nome;
     private String cor;
+    private float valorLocacao;
 
-    public Veiculo(String placa, Long ano, String nome, String cor, Long id) {
+    public Veiculo(String placa, Long ano, String nome, String cor, Long id, float valorLocacao) {
         this.placa = placa;
         this.ano = ano;
         this.nome = nome;
         this.cor = cor;
         this.id = id;
+        this.valorLocacao = valorLocacao;
     }
 
     public Veiculo() {
-        
+
     }
 
     public Long getId() {
@@ -36,8 +38,7 @@ public class Veiculo {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
+
     public String getPlaca() {
         return placa;
     }
@@ -69,9 +70,19 @@ public class Veiculo {
     public void setCor(String cor) {
         this.cor = cor;
     }
-    
+
+    public double getValorLocacao() {
+        return valorLocacao;
+    }
+
+    public void setValorLocacao(float valorLocacao) {
+        this.valorLocacao = valorLocacao;
+    }
+
     @Override
     public String toString() {
-        return this.getNome() +  "  "  + this.getCor() + "\nAno: " + this.getAno() + "\n\n";
-    }    
+        return this.getNome() + "  " + this.getCor() + "\n"
+                + "Ano: " + this.getAno()
+                + "\nValor p/ dia: " + "" + this.getValorLocacao();
+    }
 }

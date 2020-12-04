@@ -33,7 +33,10 @@ public class ConfirmaController implements Initializable {
     private Label lblCor;
     @FXML
     private Label lblAno;
-
+    @FXML
+    private Label lblValorDia;
+    @FXML
+    private Label lblValorTotal;
 
     private static Long idUsuario;
     private static int qtdDias;
@@ -43,20 +46,21 @@ public class ConfirmaController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-           this.getValues();
-    }
-    
-    private void getValues() {
         this.lblNome.setText(veiculo.getNome());
         this.lblPlaca.setText(veiculo.getPlaca());
         this.lblCor.setText(veiculo.getCor());
         this.lblAno.setText(veiculo.getAno().toString());
         this.lblDtIni.setText(dataInicio);
         this.lblDtFim.setText(dataFim);
-        this.lblDias.setText("" + qtdDias);
+        this.lblDias.setText(String.valueOf(qtdDias));
+        this.lblValorDia.setText(String.valueOf(veiculo.getValorLocacao()));
+        this.lblValorTotal.setText(String.valueOf(veiculo.getValorLocacao() * qtdDias));
     }
 
     public static void setIdUsuario(Long idUsuario) {
@@ -79,5 +83,7 @@ public class ConfirmaController implements Initializable {
     public static void setVeiculo(Veiculo veiculo) {
         ConfirmaController.veiculo = veiculo;
     }
+    
+    
 
 }
