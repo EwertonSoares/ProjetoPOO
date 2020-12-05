@@ -5,7 +5,8 @@
  */
 package blueFire;
 
-import blueFire.controller.VeiculosController;
+import blueFire.controller.HistoricoClienteController;
+import blueFire.controller.VeiculoController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,25 +17,25 @@ import javafx.stage.Stage;
  *
  * @author CIANDT\ewerton
  */
-public class Veiculos extends Application {
+public class HistoricoCliente extends Application {
 
     private static Long idUsuario;
 
-    public Veiculos(Long idUsuario) {
-        Veiculos.idUsuario = idUsuario;
+    public HistoricoCliente(Long idUsuario) {
+        HistoricoCliente.idUsuario = idUsuario;
     }
 
-    public Veiculos() {
+    public HistoricoCliente() {
 
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/blueFire/view/FXML_VEICULOS.fxml"));
+        HistoricoClienteController historico = new HistoricoClienteController();
+        historico.setarIdUsuario(this.idUsuario);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/blueFire/view/FXML_HISTORICO_CLIENTE.fxml"));
         Parent root = (Parent) loader.load();
-        
-        VeiculosController ListarVeiculosController = new VeiculosController();
-        ListarVeiculosController.setarIdUsuario(this.idUsuario);
 
         Scene scene = new Scene(root);
 

@@ -29,14 +29,4 @@ public class Utils {
         alert.showAndWait();
     }
 
-    public String converterDataSringParaDate(String strDate) {
-        if (strDate == null) {
-            return null;
-        }
-
-        String[] result = strDate.split("-");
-        String date = result[2].concat("-").concat(result[1]).concat("-").concat(result[0]);
-
-        return date;
-    }
 }

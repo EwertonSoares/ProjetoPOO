@@ -6,7 +6,7 @@
 package blueFire.controller;
 
 import blueFire.InserirDatas;
-import blueFire.Veiculos;
+import blueFire.TelaVeiculo;
 import blueFire.model.dao.VeiculoDAO;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author CIANDT\ewerton
  */
-public class VeiculosController implements Initializable {
+public class VeiculoController implements Initializable {
 
     VeiculoDAO veiculoDAO = new VeiculoDAO();
     Utils utils = new Utils();
@@ -75,11 +75,11 @@ public class VeiculosController implements Initializable {
         Stage stage = (Stage) this.btnRecarregar.getScene().getWindow();
         stage.close();
 
-        Veiculos Veiculo = new Veiculos();
+        TelaVeiculo Veiculo = new TelaVeiculo();
         Veiculo.start(new Stage());
     }
 
     public void setarIdUsuario(Long idUsuario) {
-        VeiculosController.idUsuario = idUsuario;
+        VeiculoController.idUsuario = idUsuario;
     }
 }

@@ -20,21 +20,20 @@ import java.util.logging.Logger;
  *
  * @author CIANDT\ewerton
  */
-public class VeiculoDAO {
+public class HistoricoClienteDAO {
 
-    public List<Veiculo> listarVeiculos() {
+    public List<Veiculo> pegarHistoricoCliente(Long idUsuario) {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
-        
+
         PreparedStatement stmt = null;
         ResultSet result;
         List<Veiculo> lista = new ArrayList();
 
         try {
 
-            stmt = conexao.prepareStatement("SELECT placa, ano, cor, idVeiculo, valorLocacao, nome "
-                    + "FROM veiculo "
-                    + "WHERE dataLocacao is NULL");
+            stmt = conexao.prepareStatement("CALL pegarHistoricoCliente(?)");
+            stmt.setLong(1, idUsuario);
 
             result = stmt.executeQuery();
 
@@ -43,16 +42,16 @@ public class VeiculoDAO {
                 Long ano = result.getLong("ano");
                 String nome = result.getString("nome");
                 String cor = result.getString("cor");
-                Long id = result.getLong("idVeiculo");
+                int qtd = result.getInt("qtd");
                 float valorLocacao = result.getFloat("valorLocacao");
 
-                Veiculo veiculo = new Veiculo(placa, ano, nome, cor, id, 0, valorLocacao);
+                Veiculo veiculo = new Veiculo(placa, ano, nome, cor, null, qtd, valorLocacao);
 
                 lista.add(veiculo);
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HistoricoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             connSing.disconnect();
         }

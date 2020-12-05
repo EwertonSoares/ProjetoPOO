@@ -5,7 +5,8 @@
  */
 package blueFire.controller;
 
-import blueFire.Veiculos;
+import blueFire.HistoricoCliente;
+import blueFire.TelaVeiculo;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.utils.Utils;
 import java.net.URL;
@@ -50,8 +51,11 @@ public class PrincipalUserController implements Initializable {
     @FXML
     private void abrirTelaDeVeiculos() throws Exception {
         if (this.rdbFzrRes.isSelected()) {
-            Veiculos listaDeVeiculos = new Veiculos(this.idUsuario);
+            TelaVeiculo listaDeVeiculos = new TelaVeiculo(this.idUsuario);
             listaDeVeiculos.start(new Stage());
+        } else if (this.rdbMinRes.isSelected()) {
+            HistoricoCliente historio = new HistoricoCliente(this.idUsuario);
+            historio.start(new Stage());
         }
     }
 
