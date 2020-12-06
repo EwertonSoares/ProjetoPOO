@@ -5,6 +5,7 @@
  */
 package blueFire.controller;
 
+import blueFire.DadoCliente;
 import blueFire.HistoricoCliente;
 import blueFire.TelaVeiculo;
 import blueFire.model.domain.impl.Cliente;
@@ -36,7 +37,9 @@ public class PrincipalUserController implements Initializable {
     private RadioButton rdbFzrRes;
     @FXML
     private RadioButton rdbMinRes;
-
+    @FXML
+    private RadioButton rdbMeusDados;
+    
     /**
      * Initializes the controller class.
      *
@@ -56,6 +59,9 @@ public class PrincipalUserController implements Initializable {
         } else if (this.rdbMinRes.isSelected()) {
             HistoricoCliente historio = new HistoricoCliente(this.idUsuario);
             historio.start(new Stage());
+        } else if(this.rdbMeusDados.isSelected()) {
+            DadoCliente dadosCliente = new DadoCliente(this.idUsuario);
+            dadosCliente.start(new Stage());
         }
     }
 
@@ -72,11 +78,13 @@ public class PrincipalUserController implements Initializable {
     private void checkarRdbFzrRes() {
         if (this.rdbFzrRes.isSelected()) {
             this.rdbMinRes.setDisable(true);
+            this.rdbMeusDados.setDisable(true);
 
         }
 
         if (!this.rdbFzrRes.isSelected()) {
             this.rdbMinRes.setDisable(false);
+            this.rdbMeusDados.setDisable(false);
 
         }
     }
@@ -85,11 +93,28 @@ public class PrincipalUserController implements Initializable {
     private void checkarRdbMinhaRes() {
         if (this.rdbMinRes.isSelected()) {
             this.rdbFzrRes.setDisable(true);
+            this.rdbMeusDados.setDisable(true);
 
         }
 
         if (!this.rdbMinRes.isSelected()) {
             this.rdbFzrRes.setDisable(false);
+            this.rdbMeusDados.setDisable(false);
+
+        }
+    }
+    
+    @FXML
+    private void checkarRdbMeusDados() {
+        if (this.rdbMeusDados.isSelected()) {
+            this.rdbFzrRes.setDisable(true);
+            this.rdbMinRes.setDisable(true);
+
+        }
+
+        if (!this.rdbMeusDados.isSelected()) {
+            this.rdbFzrRes.setDisable(false);
+            this.rdbMinRes.setDisable(false);
 
         }
     }

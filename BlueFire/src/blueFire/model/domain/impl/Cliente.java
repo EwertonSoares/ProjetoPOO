@@ -14,12 +14,18 @@ import blueFire.utils.Utils;
  *
  * @author CIANDT\ewerton
  */
-public class Cliente extends Pessoa implements UsuarioLogado {
+public final class Cliente extends Pessoa implements UsuarioLogado {
 
-    private ClienteDAO clienteDao = new ClienteDAO();
+    private final ClienteDAO clienteDao = new ClienteDAO();
 
     private String email;
     private String senha;
+
+    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco, String email) {
+        super(nome, sobrenome, telefone, endereco);
+        
+        this.email = email;
+    }
 
     public Cliente(String email, String senha) {
         this.email = email;

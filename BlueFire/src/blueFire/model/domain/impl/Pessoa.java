@@ -12,15 +12,14 @@ package blueFire.model.domain.impl;
 public abstract class Pessoa {
     private String nome;
     private String sobrenome;
-    private String endereco;
     private String telefone;
+    private Endereco endereco;
 
-    public Pessoa(String nome, String sobrenome, 
-            String endereco, String telefone) {
+    public Pessoa(String nome, String sobrenome, String telefone, Endereco endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.endereco = endereco;
         this.telefone = telefone;
+        this.endereco = endereco;
     }
 
     public Pessoa() {
@@ -42,11 +41,11 @@ public abstract class Pessoa {
         this.sobrenome = sobrenome;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 

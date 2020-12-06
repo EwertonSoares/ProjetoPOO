@@ -16,8 +16,9 @@
                <image>
                   <Image url="@../src/logo.png" />
                </image></ImageView>
-            <RadioButton fx:id="rdbFzrRes" layoutX="67.0" layoutY="182.0" mnemonicParsing="false" onAction="#checkarRdbFzrRes" prefHeight="17.0" prefWidth="133.0" text="Fazer Reservas" />
-            <RadioButton fx:id="rdbMinRes" layoutX="68.0" layoutY="131.0" mnemonicParsing="false" onAction="#checkarRdbMinhaRes" prefHeight="18.0" prefWidth="145.0" text="Minhas Reservas" />
+            <RadioButton fx:id="rdbFzrRes" layoutX="63.0" layoutY="161.0" mnemonicParsing="false" onAction="#checkarRdbFzrRes" prefHeight="17.0" prefWidth="133.0" text="Fazer Reservas" />
+            <RadioButton fx:id="rdbMinRes" layoutX="63.0" layoutY="220.0" mnemonicParsing="false" onAction="#checkarRdbMinhaRes" prefHeight="18.0" prefWidth="145.0" text="Minhas Reservas" />
+            <RadioButton fx:id="rdbMeusDados" layoutX="63.0" layoutY="106.0" mnemonicParsing="false" onAction="#checkarRdbMeusDados" text="Meus dados" />
          </children>
       </Pane>
    </children>
