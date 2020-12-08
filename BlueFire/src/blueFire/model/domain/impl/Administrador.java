@@ -41,7 +41,7 @@ public class Administrador extends Pessoa implements UsuarioLogado {
     @Override
     public boolean logar() {
         LoginDAO logar = new LoginDAO();
-        return logar.checkarLoginESenha(email, senha, "user");
+        return logar.checkarLoginESenha(email, senha, "adm");
     }
 
 }

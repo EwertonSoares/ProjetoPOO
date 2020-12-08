@@ -5,6 +5,7 @@
  */
 package blueFire.controller;
 
+import blueFire.PrincipalAdm;
 import blueFire.PrincipalUser;
 import blueFire.facade.LoginFacade;
 import blueFire.factories.UsuarioLogadoFactory;
@@ -82,7 +83,8 @@ public class LoginController implements Initializable {
                 telaPrincipalDeUsuario.start(new Stage());
 
             } else if (usuario instanceof Administrador) {
-                //TODO redirecionar tela Administrador
+                PrincipalAdm telaPrincipalAdm = new PrincipalAdm(this.pegarIdUsuario());
+                telaPrincipalAdm.start(new Stage());
             }
 
         } catch (Exception ex) {
