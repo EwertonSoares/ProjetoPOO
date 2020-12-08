@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -39,7 +40,8 @@ public class DadoClienteController implements Initializable {
     @FXML
     private TextField txtNumero;
 
-    DadoClienteDAO dadosCliente = new DadoClienteDAO();
+    private final DadoClienteDAO dadosCliente = new DadoClienteDAO();
+    private final Utils utils = new Utils();
     private static Long idUsuario;
     private Cliente cliente;
 
@@ -59,24 +61,31 @@ public class DadoClienteController implements Initializable {
 
     @FXML
     private void voltar() {
-        Utils utils = new Utils();
         utils.fecharJanela(this.btnVoltar);
     }
 
     @FXML
     private void salvar() {
-       Endereco endereco = new Endereco();
+        Endereco endereco = new Endereco();
 
-        cliente.setNome(this.txtNome.getText());
-        cliente.setSobrenome(this.txtSobrenome.getText());
-        cliente.setEmail(this.txtEmail.getText());
-        cliente.setTelefone(this.txtTelefone.getText());
-        endereco.setBairro(this.txtBairro.getText());
-        endereco.setRua(this.txtRua.getText());
+        cliente.setNome(this.txtNome.getText().toLowerCase());
+        cliente.setSobrenome(this.txtSobrenome.getText().toLowerCase());
+        cliente.setEmail(this.txtEmail.getText().toLowerCase());
+        cliente.setTelefone(this.txtTelefone.getText().toLowerCase());
+        endereco.setBairro(this.txtBairro.getText().toLowerCase());
+        endereco.setRua(this.txtRua.getText().toLowerCase());
         endereco.setNumero(Long.parseLong(this.txtNumero.getText()));
         cliente.setEndereco(endereco);
 
-        this.dadosCliente.autualizaDadosCliente(this.cliente);
+        boolean atualizado = this.dadosCliente.autualizaDadosCliente(this.cliente);
+
+        if (atualizado) {
+            utils.showAlert("Sucesso!", "Dados salvos!!!", "Seus dados foram "
+                    + "atualizados com sucesso!!!", Alert.AlertType.INFORMATION);
+        } else {
+            utils.showAlert("Erro!", "Os dados não\n foram salvos!!!",
+                    "Não foi possivel atualizar seu dados!", Alert.AlertType.ERROR);
+        }
     }
 
     public void setarIdUsuario(Long idUsuario) {
