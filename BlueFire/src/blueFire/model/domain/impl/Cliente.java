@@ -18,13 +18,15 @@ public final class Cliente extends Pessoa implements UsuarioLogado {
 
     private final ClienteDAO clienteDao = new ClienteDAO();
 
+    private Long idUsuario;
     private String email;
     private String senha;
 
-    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco, String email) {
+    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco, String email, Long idUsuario) {
         super(nome, sobrenome, telefone, endereco);
         
         this.email = email;
+        this.idUsuario = idUsuario;
     }
 
     public Cliente(String email, String senha) {
@@ -36,6 +38,14 @@ public final class Cliente extends Pessoa implements UsuarioLogado {
 
     }
 
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
     public String getEmail() {
         return email;
     }

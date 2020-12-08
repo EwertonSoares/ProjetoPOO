@@ -20,7 +20,7 @@
             <Hyperlink fx:id="linkCadastrar" layoutX="29.0" layoutY="359.0" prefHeight="24.0" prefWidth="81.0" text="Cadastrar" textFill="#131413" underline="true" />
             <Hyperlink fx:id="linkEsqueceu" layoutX="110.0" layoutY="359.0" prefHeight="24.0" prefWidth="131.0" text="Esqueceu a senha" textFill="#131413" underline="true" />
             <Label layoutX="36.0" layoutY="246.0" prefHeight="16.0" prefWidth="81.0" text="Email" />
-            <Label layoutX="36.0" layoutY="307.0" prefHeight="16.0" prefWidth="81.0" text="Senha" />
+            <Label layoutX="35.0" layoutY="307.0" prefHeight="16.0" prefWidth="81.0" text="Senha" />
             <ImageView fitHeight="148.0" fitWidth="247.0" layoutX="60.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/perfil.png" />

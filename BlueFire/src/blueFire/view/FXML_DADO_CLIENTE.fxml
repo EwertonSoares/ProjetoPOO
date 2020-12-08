@@ -25,7 +25,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnSalvar" layoutX="160.0" layoutY="468.0" mnemonicParsing="false" onAction="#salvar" prefHeight="37.0" prefWidth="95.0" style="-fx-cursor: hand;" text="Salvar" />
+            <Button layoutX="160.0" layoutY="468.0" mnemonicParsing="false" onAction="#salvar" prefHeight="37.0" prefWidth="95.0" style="-fx-cursor: hand;" text="Salvar" />
             <TextField fx:id="txtNome" layoutX="21.0" layoutY="66.0" prefHeight="26.0" prefWidth="223.0" />
             <Label layoutX="25.0" layoutY="50.0" prefHeight="18.0" prefWidth="61.0" text="Nome:" />
             <TextField fx:id="txtSobrenome" layoutX="25.0" layoutY="116.0" prefHeight="26.0" prefWidth="223.0" />

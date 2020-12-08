@@ -41,13 +41,13 @@ public class DadoClienteDAO {
                 String sobrenome = result.getString("sobrenome");
                 String email = result.getString("email");
                 String telefone = result.getString("telefone");
-                
+
                 String rua = result.getString("rua");
                 Long numero = result.getLong("numero");
                 String bairro = result.getString("bairro");
-                
+
                 Endereco endereco = new Endereco(rua, numero, bairro);
-                Cliente cliente = new Cliente(nome, sobrenome, telefone, endereco, email);
+                Cliente cliente = new Cliente(nome, sobrenome, telefone, endereco, email, idUsuario);
 
                 dadosCliente = cliente;
             }
@@ -59,6 +59,38 @@ public class DadoClienteDAO {
         }
 
         return dadosCliente;
+    }
+
+    public boolean autualizaDadosCliente(Cliente cliente) {
+        ConnectionSingleton connSing = ConnectionSingleton.getInstance();
+        Connection conexao = connSing.connect();
+
+        PreparedStatement stmt = null;
+
+        try {
+
+            stmt = conexao.prepareStatement("CALL atualizaDadosCliente(?,?,?,?,?,?,?,?);");
+
+            stmt.setLong(1, cliente.getIdUsuario());
+            stmt.setString(2, cliente.getNome());
+            stmt.setString(3, cliente.getSobrenome());
+            stmt.setString(4, cliente.getEmail());
+            stmt.setString(5, cliente.getEndereco().getBairro());
+            stmt.setString(6, cliente.getEndereco().getRua());
+            stmt.setLong(7, cliente.getEndereco().getNumero());
+            stmt.setString(8, cliente.getTelefone());
+
+            if (!stmt.execute()) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DadoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            connSing.disconnect();
+        }
+
+        return false;
     }
 
 }

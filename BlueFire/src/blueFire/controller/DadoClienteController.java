@@ -7,9 +7,9 @@ package blueFire.controller;
 
 import blueFire.model.dao.DadoClienteDAO;
 import blueFire.model.domain.impl.Cliente;
+import blueFire.model.domain.impl.Endereco;
 import blueFire.utils.Utils;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,8 +24,6 @@ public class DadoClienteController implements Initializable {
 
     @FXML
     private Button btnVoltar;
-    @FXML
-    private Button btnSalvar;
     @FXML
     private TextField txtNome;
     @FXML
@@ -43,16 +41,17 @@ public class DadoClienteController implements Initializable {
 
     DadoClienteDAO dadosCliente = new DadoClienteDAO();
     private static Long idUsuario;
+    private Cliente cliente;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Cliente cliente;
-        cliente = this.dadosCliente.carregarDadosCliente(DadoClienteController.idUsuario);
+        this.cliente = this.dadosCliente.carregarDadosCliente(DadoClienteController.idUsuario);
 
         this.txtNome.setText(cliente.getNome().toUpperCase());
         this.txtSobrenome.setText(cliente.getSobrenome().toUpperCase());
         this.txtEmail.setText(cliente.getEmail().toUpperCase());
         this.txtTelefone.setText(cliente.getTelefone());
+
         this.txtBairro.setText(cliente.getEndereco().getBairro().toUpperCase());
         this.txtRua.setText(cliente.getEndereco().getRua().toUpperCase());
         this.txtNumero.setText(cliente.getEndereco().getNumero().toString());
@@ -66,6 +65,18 @@ public class DadoClienteController implements Initializable {
 
     @FXML
     private void salvar() {
+       Endereco endereco = new Endereco();
+
+        cliente.setNome(this.txtNome.getText());
+        cliente.setSobrenome(this.txtSobrenome.getText());
+        cliente.setEmail(this.txtEmail.getText());
+        cliente.setTelefone(this.txtTelefone.getText());
+        endereco.setBairro(this.txtBairro.getText());
+        endereco.setRua(this.txtRua.getText());
+        endereco.setNumero(Long.parseLong(this.txtNumero.getText()));
+        cliente.setEndereco(endereco);
+
+        this.dadosCliente.autualizaDadosCliente(this.cliente);
     }
 
     public void setarIdUsuario(Long idUsuario) {
