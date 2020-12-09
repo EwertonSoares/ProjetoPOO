@@ -1,0 +1,8 @@
+.listView {
+    -fx-font-family: "Times new roma", serif, Arial; 
+    -fx-font-size: 13px; 
+}
+
+.botao {
+    -fx-cursor: hand;
+}

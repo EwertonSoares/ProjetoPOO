@@ -1,0 +1,16 @@
+.listView {
+    -fx-font-family: "Times new roma", serif, Arial; 
+    -fx-font-size: 13px; 
+}
+
+.botao {
+    -fx-cursor: hand;
+}
+/*
+.button.rent, .button.reload {
+    -fx-background-color: #22ee8b;
+}
+
+.button.update {
+    -fx-background-color: #5d8cd6;
+}*/

@@ -5,16 +5,14 @@
  */
 package blueFire.controller;
 
-import blueFire.DadoCliente;
-import blueFire.HistoricoCliente;
-import blueFire.TelaVeiculo;
+import blueFire.VeiculoReservado;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.utils.Utils;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
@@ -29,8 +27,6 @@ public class PrincipalAdmController implements Initializable {
     Utils utils = new Utils();
     private static Long idUsuario;
 
-    @FXML
-    private Button btnContinuar;
     @FXML
     private RadioButton rdbConfDev;
     @FXML
@@ -55,16 +51,22 @@ public class PrincipalAdmController implements Initializable {
 
     @FXML
     private void continuar() throws Exception {
-//        if (this.rdbFzrRes.isSelected()) {
-//            TelaVeiculo listaDeVeiculos = new TelaVeiculo(this.idUsuario);
-//            listaDeVeiculos.start(new Stage());
-//        } else if (this.rdbMinRes.isSelected()) {
-//            HistoricoCliente historio = new HistoricoCliente(this.idUsuario);
-//            historio.start(new Stage());
-//        } else if(this.rdbMeusDados.isSelected()) {
-//            DadoCliente dadosCliente = new DadoCliente(this.idUsuario);
-//            dadosCliente.start(new Stage());
-//        }
+        if (this.rdbVeriReser.isSelected()) {
+            VeiculoReservado veiculoReservado = new VeiculoReservado(this.idUsuario);
+            veiculoReservado.start(new Stage());
+
+        } else if (this.rdbCadasVei.isSelected()) {
+
+        } else if (this.rdbConfDev.isSelected()) {
+
+        } else if (this.rdbAtuaVei.isSelected()) {
+
+        } else if (this.rdbRemoveVei.isSelected()) {
+
+        } else {
+            utils.showAlert("Atenção", "Item não selucionado!",
+                    "Selecione uma das opções!", Alert.AlertType.WARNING);
+        }
     }
 
     public void setarIdUsuario(Long idUsuario) {

@@ -5,6 +5,8 @@
  */
 package blueFire.model.domain.impl;
 
+import javafx.scene.control.CheckBox;
+
 /**
  *
  * @author CIANDT\ewerton
@@ -89,6 +91,7 @@ public class Veiculo {
         this.valorLocacao = valorLocacao;
     }
 
+
     @Override
     public String toString() {
 
@@ -103,7 +106,7 @@ public class Veiculo {
                 + "Placa: " + placa + "\n"
                 + "Ano: " + ano + "\n\n"
                 + "Qtd dias: " + qtd + "\n"
-                + "Diaria: " + valorLocacao+"\n\n";
+                + "Diaria: " + valorLocacao + "\n\n";
 
     }
 

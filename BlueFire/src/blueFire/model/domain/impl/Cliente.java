@@ -22,7 +22,8 @@ public final class Cliente extends Pessoa implements UsuarioLogado {
     private String email;
     private String senha;
 
-    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco, String email, Long idUsuario) {
+    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco, 
+            String email, Long idUsuario) {
         super(nome, sobrenome, telefone, endereco);
         
         this.email = email;
