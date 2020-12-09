@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -57,11 +58,17 @@ public class VeiculoReservadoController implements Initializable {
     }
 
     @FXML
-    public void irParaProximaPagina() throws Exception {
-//        InformacoesGerais geral = (InformacoesGerais) this.lvVeiculos.getSelectionModel().getSelectedItem();
+    public void foiRetirado() throws Exception {
+        InformacoesGerais geral = (InformacoesGerais) this.lvVeiculos.getSelectionModel().getSelectedItem();
 
-//        InserirDatas inserirDatas = new InserirDatas(this.idUsuario, veiculo);
-//        inserirDatas.start(new Stage());
+        boolean done = this.veiculoReservadoDAO.retiraVeiculo(geral.getVeiculo().getId());
+
+        if (done) {
+            utils.showAlert("Sucesso", "Vericulo retirado!", "Veiculo foi retirado!", Alert.AlertType.INFORMATION);
+        } else {
+            utils.showAlert("Erro", "Vericulo não retirado!", "Não foi possivel permitir"
+                    + "\na retirada do veiculo.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

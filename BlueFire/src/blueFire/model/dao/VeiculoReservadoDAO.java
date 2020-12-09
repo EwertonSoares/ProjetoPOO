@@ -79,4 +79,31 @@ public class VeiculoReservadoDAO {
 
         return lista;
     }
+
+    public boolean retiraVeiculo(Long id) {
+        ConnectionSingleton connSing = ConnectionSingleton.getInstance();
+        Connection conexao = connSing.connect();
+
+        PreparedStatement stmt = null;
+        boolean check = false;
+
+        try {
+
+            stmt = conexao.prepareStatement("UPDATE veiculo SET retirado = true WHERE idVeiculo = ?;");
+            stmt.setLong(1, id);
+            check = stmt.execute();
+
+            if (!check) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoReservadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            connSing.disconnect();
+        }
+
+        return check;
+    }
+
 }
