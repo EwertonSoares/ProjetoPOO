@@ -15,6 +15,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -98,13 +100,17 @@ public class VeiculoDAO {
                 int qtdDias = result.getInt("Qtd_dias");
                 float valorLocacao = result.getFloat("valor_dia");
 
-                Date dataLocacao = result.getDate("DataLocacao");
-                Date dataDevolucao = result.getDate("DataDevolucao");
+                Date dataLoc = result.getDate("DataLocacao");
+                LocalDate dataLocacao = dataLoc.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                Date dataDev = result.getDate("DataDevolucao");
+                LocalDate dataDevolucao = dataDev.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
                 boolean retirado = result.getBoolean("retirado");
 
                 Veiculo veiculo = new Veiculo(placa, ano, carro, cor, id, qtdDias, valorLocacao);
 
-                Reserva geral = new Reserva(cliente, veiculo, dataLocacao, dataDevolucao, retirado);
+                Reserva geral = new Reserva(cliente, veiculo, 0, dataLocacao, dataDevolucao, retirado);
 
                 lista.add(geral);
             }

@@ -25,9 +25,8 @@ import javafx.stage.Stage;
  */
 public class PrincipalUserController implements Initializable {
 
-    Cliente cliente;
     Utils utils = new Utils();
-    private static Long idUsuario;
+    private static Cliente cliente;
 
     @FXML
     private Button btnContinuar;
@@ -54,26 +53,27 @@ public class PrincipalUserController implements Initializable {
     @FXML
     private void abrirTelaDeVeiculos() throws Exception {
         if (this.rdbFzrRes.isSelected()) {
-            TelaVeiculo listaDeVeiculos = new TelaVeiculo(this.idUsuario);
+            TelaVeiculo listaDeVeiculos = new TelaVeiculo(this.cliente);
             listaDeVeiculos.start(new Stage());
         } else if (this.rdbMinRes.isSelected()) {
-            HistoricoCliente historio = new HistoricoCliente(this.idUsuario);
+            HistoricoCliente historio = new HistoricoCliente(this.cliente);
             historio.start(new Stage());
         } else if(this.rdbMeusDados.isSelected()) {
-            DadoCliente dadosCliente = new DadoCliente(this.idUsuario);
+            DadoCliente dadosCliente = new DadoCliente(this.cliente);
             dadosCliente.start(new Stage());
         }
     }
 
+    
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     @FXML
     private void fechar() {
         utils.fecharJanela(btnFechar);
     }
-
-    public void setarIdUsuario(Long idUsuario) {
-        PrincipalUserController.idUsuario = idUsuario;
-    }
-
+    
     @FXML
     private void checkarRdbFzrRes() {
         if (this.rdbFzrRes.isSelected()) {

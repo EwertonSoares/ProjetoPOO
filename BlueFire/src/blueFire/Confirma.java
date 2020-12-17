@@ -6,7 +6,9 @@
 package blueFire;
 
 import blueFire.controller.ConfirmaController;
+import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
+import java.time.LocalDate;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,14 +21,14 @@ import javafx.stage.Stage;
  */
 public class Confirma extends Application {
 
-    private final Long idUsuario;
-    private final String dataInicio;
-    private final int qtdDias;
-    private final String dataFim;
+    private final Cliente cliente;
     private final Veiculo veiculo;
+    private final LocalDate dataInicio;
+    private final LocalDate dataFim;
+    private final int qtdDias;
 
-    public Confirma(Long idUsuario, Veiculo veiculo, int dias, String dataInicio, String dataFim) {
-        this.idUsuario = idUsuario;
+    public Confirma(Cliente cliente, Veiculo veiculo, int dias, LocalDate dataInicio, LocalDate dataFim) {
+        this.cliente = cliente;
         this.veiculo = veiculo;
         this.qtdDias = dias;
         this.dataInicio = dataInicio;
@@ -36,7 +38,7 @@ public class Confirma extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         ConfirmaController confirmaController = new ConfirmaController();
-        ConfirmaController.setIdUsuario(this.idUsuario);
+        ConfirmaController.setCliente(this.cliente);
         ConfirmaController.setVeiculo(this.veiculo);
         ConfirmaController.setQtdDias(this.qtdDias);
         ConfirmaController.setDataInicio(this.dataInicio);

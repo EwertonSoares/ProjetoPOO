@@ -32,11 +32,9 @@ public class DataController implements Initializable {
     private DatePicker dpInicio;
     @FXML
     private DatePicker dpFim;
-
     private Utils utils;
-    Cliente cliente = new Cliente();
-
-    private static Long idUsuario;
+    
+    private static Cliente cliente;
     private static Veiculo veiculo;
 
     /**
@@ -76,28 +74,29 @@ public class DataController implements Initializable {
         utils.fecharJanela(this.btnFechar);
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    public static Cliente getCliente() {
+        return cliente;
     }
 
-    public Veiculo getVeiculo() {
+    public static Veiculo getVeiculo() {
         return veiculo;
     }
     
+  
     private void abrirTelaDeConfirmacao(int dias) throws Exception {
 
-        String dataInicio = this.dpInicio.getValue().toString();
-        String dataFim = this.dpFim.getValue().toString();
+        LocalDate dataInicio = this.dpInicio.getValue();
+        LocalDate dataFim = this.dpFim.getValue();
 
-        Confirma confirma = new Confirma(this.idUsuario, this.getVeiculo(), dias, dataInicio, dataFim);
+        Confirma confirma = new Confirma(this.getCliente(), this.getVeiculo(), dias, dataInicio, dataFim);
 
         confirma.start(new Stage());
 

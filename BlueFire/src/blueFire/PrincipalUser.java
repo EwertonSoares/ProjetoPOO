@@ -6,6 +6,7 @@
 package blueFire;
 
 import blueFire.controller.PrincipalUserController;
+import blueFire.model.domain.impl.Cliente;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,10 +19,10 @@ import javafx.stage.Stage;
  */
 public class PrincipalUser extends Application {
 
-    private static Long idUsuario;
+    private static Cliente cliente;
 
-    public PrincipalUser(Long idUsuario) {
-        PrincipalUser.idUsuario = idUsuario;
+    public PrincipalUser(Cliente cliente) {
+        PrincipalUser.cliente = cliente;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class PrincipalUser extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/blueFire/view/FXML_PRINCIPAL_USER.fxml"));
 
         PrincipalUserController principalUserController = new PrincipalUserController();
-        principalUserController.setarIdUsuario(this.idUsuario);
+        principalUserController.setCliente(this.cliente);
 
         Scene scene = new Scene(root);
 

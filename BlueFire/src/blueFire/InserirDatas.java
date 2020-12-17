@@ -6,6 +6,7 @@
 package blueFire;
 
 import blueFire.controller.DataController;
+import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,12 +20,12 @@ import javafx.stage.Stage;
  */
 public class InserirDatas extends Application {
 
-    private static Long idUsuario;
+    private static Cliente cliente;
     private static Veiculo veiculo;
     
 
-    public InserirDatas(Long idUsuario, Veiculo veiculo) {
-        this.idUsuario = idUsuario;
+    public InserirDatas(Cliente cliente, Veiculo veiculo) {
+        this.cliente = cliente;
         this.veiculo = veiculo;
     }
     
@@ -33,8 +34,8 @@ public class InserirDatas extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/blueFire/view/FXML_INSERIR_DATAS.fxml"));
         
         DataController dataController = new DataController();
-        dataController.setIdUsuario(InserirDatas.idUsuario);
-        dataController.setVeiculo(InserirDatas.veiculo);
+        dataController.setCliente(this.cliente);
+        dataController.setVeiculo(this.veiculo);
         
         Scene scene = new Scene(root);
         

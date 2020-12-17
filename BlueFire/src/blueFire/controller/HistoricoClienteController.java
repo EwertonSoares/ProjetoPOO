@@ -30,12 +30,12 @@ public class HistoricoClienteController implements Initializable {
     private Button btnVoltar;
 
     private ObservableList<Veiculo> oblVeiculos;
-    private static Long idUsuario;
+    private static Cliente cliente;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Cliente cliente = new Cliente();
-        List<Veiculo> lista = cliente.consultarHistoricoReserva(idUsuario); 
+        List<Veiculo> lista = cliente.consultarHistoricoReserva(this.cliente.getIdUsuario()); 
 
         this.oblVeiculos = FXCollections.observableArrayList(lista);
         this.lvHistorico.setItems(oblVeiculos);
@@ -47,8 +47,8 @@ public class HistoricoClienteController implements Initializable {
         utils.fecharJanela(this.btnVoltar);
     }
 
-    public void setarIdUsuario(Long idUsuario) {
-        HistoricoClienteController.idUsuario = idUsuario;
+    public void setCliente(Cliente cliente) {
+       this.cliente = cliente;
     }
 
 }

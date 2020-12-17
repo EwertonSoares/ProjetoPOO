@@ -36,7 +36,7 @@ public class LoginController implements Initializable {
     Utils utils = new Utils();
     LoginFacade facade = new LoginFacade();
 
-    private Long idUsuario;
+    private Cliente cliente;
 
     @FXML
     private TextField txtEmail;
@@ -79,11 +79,11 @@ public class LoginController implements Initializable {
             facade.logar(usuario);
             if (usuario instanceof Cliente) {
 
-                PrincipalUser telaPrincipalDeUsuario = new PrincipalUser(this.pegarIdUsuario());
+                PrincipalUser telaPrincipalDeUsuario = new PrincipalUser(this.pegarInfoUsuario());
                 telaPrincipalDeUsuario.start(new Stage());
 
             } else if (usuario instanceof Administrador) {
-                PrincipalAdm telaPrincipalAdm = new PrincipalAdm(this.pegarIdUsuario());
+                PrincipalAdm telaPrincipalAdm = new PrincipalAdm(this.pegarInfoUsuario());
                 telaPrincipalAdm.start(new Stage());
             }
 
@@ -93,10 +93,10 @@ public class LoginController implements Initializable {
         }
     }
 
-    public Long pegarIdUsuario() {
+    public Cliente pegarInfoUsuario() {
         UtilsDAO utilsDAO = new UtilsDAO();
-        Long id = utilsDAO.pegarIdUsuario(this.txtEmail.getText());
-        return id;
+        cliente = utilsDAO.buscaCliente(this.txtEmail.getText());
+        return cliente;
     }
 
     @FXML

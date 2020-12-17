@@ -6,6 +6,7 @@
 package blueFire;
 
 import blueFire.controller.VeiculoController;
+import blueFire.model.domain.impl.Cliente;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,10 +19,10 @@ import javafx.stage.Stage;
  */
 public class TelaVeiculo extends Application {
 
-    private static Long idUsuario;
+    private static Cliente cliente;
 
-    public TelaVeiculo(Long idUsuario) {
-        TelaVeiculo.idUsuario = idUsuario;
+    public TelaVeiculo(Cliente cliente) {
+        TelaVeiculo.cliente = cliente;
     }
 
     public TelaVeiculo() {
@@ -34,7 +35,7 @@ public class TelaVeiculo extends Application {
         Parent root = (Parent) loader.load();
         
         VeiculoController ListarVeiculosController = new VeiculoController();
-        ListarVeiculosController.setarIdUsuario(this.idUsuario);
+        ListarVeiculosController.setCliente(this.cliente);
 
         Scene scene = new Scene(root);
 

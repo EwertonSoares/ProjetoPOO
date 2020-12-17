@@ -6,6 +6,7 @@
 package blueFire;
 
 import blueFire.controller.DadoClienteController;
+import blueFire.model.domain.impl.Cliente;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,10 +19,10 @@ import javafx.stage.Stage;
  */
 public class DadoCliente extends Application {
 
-    private static Long idUsuario;
+    private static Cliente cliente;
 
-    public DadoCliente(Long idUsuario) {
-        DadoCliente.idUsuario = idUsuario;
+    public DadoCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public DadoCliente() {
@@ -31,7 +32,7 @@ public class DadoCliente extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         DadoClienteController dadosCliente = new DadoClienteController();
-        dadosCliente.setarIdUsuario(this.idUsuario);
+        dadosCliente.setCliente(this.cliente);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/blueFire/view/FXML_DADO_CLIENTE.fxml"));
         Parent root = (Parent) loader.load();

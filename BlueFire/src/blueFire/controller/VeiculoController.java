@@ -31,8 +31,7 @@ public class VeiculoController implements Initializable {
 
     VeiculoDAO veiculoDAO = new VeiculoDAO();
     Utils utils = new Utils();
-    Cliente cliente;
-
+    
     @FXML
     private Button btnFechar;
     @FXML
@@ -41,7 +40,7 @@ public class VeiculoController implements Initializable {
     private Button btnRecarregar;
 
     private ObservableList<Veiculo> oblVeiculos;
-    private static Long idUsuario;
+    private static Cliente cliente;
 
     /**
      * Initializes the controller class.
@@ -61,7 +60,7 @@ public class VeiculoController implements Initializable {
     public void irParaProximaPagina() throws Exception {
         Veiculo veiculo = (Veiculo) this.lvVeiculos.getSelectionModel().getSelectedItem();
 
-        InserirDatas inserirDatas = new InserirDatas(this.idUsuario, veiculo);
+        InserirDatas inserirDatas = new InserirDatas(this.cliente, veiculo);
         inserirDatas.start(new Stage());
     }
 
@@ -79,7 +78,7 @@ public class VeiculoController implements Initializable {
         Veiculo.start(new Stage());
     }
 
-    public void setarIdUsuario(Long idUsuario) {
-        VeiculoController.idUsuario = idUsuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

@@ -6,10 +6,12 @@
 package blueFire.model.dao;
 
 import blueFire.model.database.ConnectionSingleton;
+import blueFire.model.domain.impl.Reserva;
+import blueFire.utils.Utils;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,8 +20,10 @@ import java.util.logging.Logger;
  * @author CIANDT\ewerton
  */
 public class ClienteDAO {
+    
+    private Utils utils;
 
-    public boolean reservarVeiculo(Long idUsuario, Long idVeiculo, int qtd, String dataInicio) {
+    public boolean reservarVeiculo(Reserva reserva) {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
 
@@ -29,10 +33,10 @@ public class ClienteDAO {
         try {
 
             stmt = conexao.prepareStatement("CALL reservarVeiculo(?,?,?,?);");
-            stmt.setLong(1, idUsuario);
-            stmt.setLong(2, idVeiculo);
-            stmt.setInt(3, qtd);                  
-            stmt.setString(4, dataInicio);
+            stmt.setLong(1, reserva.getCliente().getIdUsuario());
+            stmt.setLong(2, reserva.getVeiculo().getId());
+            stmt.setInt(3, reserva.getQtdDias());                  
+            stmt.setString(4, reserva.getDataLocacao().now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")));
             check = stmt.execute();
 
             if (!check) {

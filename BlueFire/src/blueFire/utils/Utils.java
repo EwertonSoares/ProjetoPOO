@@ -5,6 +5,14 @@
  */
 package blueFire.utils;
 
+import static java.lang.String.format;
+import static java.lang.String.format;
+import static java.lang.String.format;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -27,6 +35,17 @@ public class Utils {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    public String formatarDate(String strDate) {
+        if (strDate == null) {
+            return null;
+        }
+
+        String[] result = strDate.split("-");
+        String date = result[2].concat("-").concat(result[1]).concat("-").concat(result[0]);
+
+        return date;
     }
 
 }

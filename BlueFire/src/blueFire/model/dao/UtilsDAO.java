@@ -6,13 +6,11 @@
 package blueFire.model.dao;
 
 import blueFire.model.database.ConnectionSingleton;
-import blueFire.model.domain.impl.Veiculo;
+import blueFire.model.domain.impl.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,23 +20,30 @@ import java.util.logging.Logger;
  */
 public class UtilsDAO {
 
-    public Long pegarIdUsuario(String email) {
+    public Cliente buscaCliente(String email) {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
 
         PreparedStatement stmt = null;
         ResultSet result;
-        Long id = 0L;
+        Cliente cliente = new Cliente();
 
         try {
 
-            stmt = conexao.prepareStatement("SELECT idUsuario FROM usuario WHERE email = ?");
+            stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE email = ?");
             stmt.setString(1, email);
 
             result = stmt.executeQuery();
 
             while (result.next()) {
-                id = result.getLong("idUsuario");
+                cliente.setIdUsuario(result.getLong("idUsuario"));
+                cliente.setNome(result.getString("nome"));
+                cliente.setSobrenome(result.getString("sobrenome"));
+                cliente.setEmail(result.getString("email"));
+                cliente.getEndereco().setBairro(result.getString("bairro"));
+                cliente.getEndereco().setRua(result.getString("rua"));
+                cliente.getEndereco().setNumero(result.getLong("numero"));
+                cliente.setTelefone(result.getString("telefone"));
             }
 
         } catch (SQLException ex) {
@@ -47,6 +52,6 @@ public class UtilsDAO {
             connSing.disconnect();
         }
 
-        return id;
+        return cliente;
     }
 }

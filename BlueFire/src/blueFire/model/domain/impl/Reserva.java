@@ -5,7 +5,8 @@
  */
 package blueFire.model.domain.impl;
 
-import java.sql.Date;
+import java.time.LocalDate;
+
 
 /**
  *
@@ -15,13 +16,15 @@ public class Reserva {
 
     private Cliente cliente;
     private Veiculo veiculo;
-    private Date DataLocacao;
-    private Date DataDevolucao;
+    private int qtdDias;
+    private LocalDate DataLocacao;
+    private LocalDate DataDevolucao;
     private boolean retirado;
 
-    public Reserva(Cliente cliente, Veiculo veiculo, Date DataLocacao, Date DataDevolucao, boolean retirado) {
+    public Reserva(Cliente cliente, Veiculo veiculo, int qtdDias, LocalDate DataLocacao, LocalDate DataDevolucao, boolean retirado) {
         this.cliente = cliente;
         this.veiculo = veiculo;
+        this.qtdDias = qtdDias;
         this.DataLocacao = DataLocacao;
         this.DataDevolucao = DataDevolucao;
         this.retirado = retirado;
@@ -46,19 +49,27 @@ public class Reserva {
         this.veiculo = veiculo;
     }
 
-    public Date getDataLocacao() {
+    public int getQtdDias() {
+        return qtdDias;
+    }
+
+    public void setQtdDias(int qtdDias) {
+        this.qtdDias = qtdDias;
+    }
+    
+    public LocalDate getDataLocacao() {
         return DataLocacao;
     }
 
-    public void setDataLocacao(Date DataLocacao) {
+    public void setDataLocacao(LocalDate DataLocacao) {
         this.DataLocacao = DataLocacao;
     }
 
-    public Date getDataDevolucao() {
+    public LocalDate getDataDevolucao() {
         return DataDevolucao;
     }
 
-    public void setDataDevolucao(Date DataDevolucao) {
+    public void setDataDevolucao(LocalDate DataDevolucao) {
         this.DataDevolucao = DataDevolucao;
     }
 
@@ -69,22 +80,21 @@ public class Reserva {
     public void setRetirado(boolean retirado) {
         this.retirado = retirado;
     }
-   
+
     @Override
     public String toString() {
         String retirado = this.isRetirado() == true ? "SIM" : "NÃO";
-        
-        return "DADOS DO CLIENTE:\n" +"  Nome: "+ this.cliente.getNome().concat(" ").concat(this.cliente.getSobrenome())+"\n"
-                +"  Email: "+ this.cliente.getEmail() + "\n" +"  Bairro: "+ this.cliente.getEndereco().getBairro() + "\n"
-                +"  "+ this.cliente.getEndereco().getRua() +"\n" + "  Numero: " + this.cliente.getEndereco().getNumero() + "\n"
-                +"  Telefone: "+ this.cliente.getTelefone() + "\n"
-                +"\n\nDADOS DO VEICULO:\n" +"  Nome: "+ this.veiculo.getNome() + "\n" 
-                +"  Cor: "+ this.veiculo.getCor() + "\n" +"  Ano:"+ this.veiculo.getAno() + "\n"
-                +"  Placa: "+ this.veiculo.getPlaca() + "\n"+ "  Valor p/ dia: "+ this.veiculo.getValorLocacao() +"\n"
-                +"  Qtd dias locação: "+ this.veiculo.getQtdDiasLocacao() +"\n"
-                + "\n\nData da reserva: " + this.getDataLocacao() + "\n"
-                +"Data prevista\np/ devolução: " + this.getDataDevolucao() + "\n"
-               +"Retirado: " + retirado;
-    }
 
+        return "DADOS DO CLIENTE:\n" + "  Nome: " + this.cliente.getNome().concat(" ").concat(this.cliente.getSobrenome()) + "\n"
+                + "  Email: " + this.cliente.getEmail() + "\n" + "  Bairro: " + this.cliente.getEndereco().getBairro() + "\n"
+                + "  " + this.cliente.getEndereco().getRua() + "\n" + "  Numero: " + this.cliente.getEndereco().getNumero() + "\n"
+                + "  Telefone: " + this.cliente.getTelefone() + "\n"
+                + "\n\nDADOS DO VEICULO:\n" + "  Nome: " + this.veiculo.getNome() + "\n"
+                + "  Cor: " + this.veiculo.getCor() + "\n" + "  Ano:" + this.veiculo.getAno() + "\n"
+                + "  Placa: " + this.veiculo.getPlaca() + "\n" + "  Valor p/ dia: " + this.veiculo.getValorLocacao() + "\n"
+                + "  Qtd dias locação: " + this.veiculo.getQtdDiasLocacao() + "\n"
+                + "\n\nData da reserva: " + this.getDataLocacao() + "\n"
+                + "Data prevista\np/ devolução: " + this.getDataDevolucao() + "\n"
+                + "Retirado: " + retirado;
+    }
 }

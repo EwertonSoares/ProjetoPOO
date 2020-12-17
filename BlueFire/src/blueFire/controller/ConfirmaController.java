@@ -6,9 +6,13 @@
 package blueFire.controller;
 
 import blueFire.model.domain.impl.Cliente;
+import blueFire.model.domain.impl.Reserva;
 import blueFire.model.domain.impl.Veiculo;
 import blueFire.utils.Utils;
 import java.net.URL;
+import java.sql.Date;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +27,9 @@ import javafx.scene.control.Label;
  */
 public class ConfirmaController implements Initializable {
 
+    private Cliente cliente = new Cliente();
+    private Utils utils = new Utils();
+    
     @FXML
     private Label lblDtIni;
     @FXML
@@ -46,13 +53,11 @@ public class ConfirmaController implements Initializable {
     @FXML
     private Button btnRecarregar;
 
-    private static Long idUsuario;
-    private static int qtdDias;
-    private static String dataInicio;
-    private static String dataFim;
+    private static Cliente clienteAtual;
     private static Veiculo veiculo;
-
-    Utils utils = new Utils();
+    private static int qtdDias;
+    private static LocalDate dataInicio;
+    private static LocalDate dataFim;
 
     /**
      * Initializes the controller class.
@@ -66,17 +71,22 @@ public class ConfirmaController implements Initializable {
         this.lblPlaca.setText(veiculo.getPlaca());
         this.lblCor.setText(veiculo.getCor());
         this.lblAno.setText(veiculo.getAno().toString());
-        this.lblDtIni.setText(dataInicio);
-        this.lblDtFim.setText(dataFim);
+        this.lblDtIni.setText(dataInicio.toString());
+        this.lblDtFim.setText(dataFim.toString());
         this.lblDias.setText(String.valueOf(qtdDias));
         this.lblValorDia.setText("" + veiculo.getValorLocacao());
         this.lblValorTotal.setText("" + veiculo.getValorLocacao() * qtdDias);
     }
 
     @FXML
-    private void confirma() {        
-        Cliente cliente = new Cliente();
-        boolean reservado = cliente.fazerReserva(idUsuario, veiculo.getId(), qtdDias, dataInicio);
+    private void confirma() throws ParseException {        
+        Reserva reserva = new Reserva();
+        reserva.setCliente(this.clienteAtual);
+        reserva.setVeiculo(this.veiculo);
+        reserva.setQtdDias(this.qtdDias);  
+        reserva.setDataLocacao(this.dataInicio);
+        
+        boolean reservado = cliente.fazerReserva(reserva);
 
         if (reservado) {
             utils.showAlert("Suacesso", "Veiculo reservado!",
@@ -89,8 +99,8 @@ public class ConfirmaController implements Initializable {
     }
     
     
-    public static void setIdUsuario(Long idUsuario) {
-        ConfirmaController.idUsuario = idUsuario;
+    public static void setCliente(Cliente cliente) {
+       ConfirmaController.clienteAtual = cliente;
 
     }
 
@@ -98,11 +108,11 @@ public class ConfirmaController implements Initializable {
         ConfirmaController.qtdDias = qtdDias;
     }
 
-    public static void setDataInicio(String dataInicio) {
+    public static void setDataInicio(LocalDate dataInicio) {
         ConfirmaController.dataInicio = dataInicio;
     }
 
-    public static void setDataFim(String dataFim) {
+    public static void setDataFim(LocalDate dataFim) {
         ConfirmaController.dataFim = dataFim;
     }
 

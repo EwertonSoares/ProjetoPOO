@@ -7,6 +7,7 @@ package blueFire;
 
 import blueFire.controller.HistoricoClienteController;
 import blueFire.controller.VeiculoController;
+import blueFire.model.domain.impl.Cliente;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,10 +20,10 @@ import javafx.stage.Stage;
  */
 public class HistoricoCliente extends Application {
 
-    private static Long idUsuario;
+    private static Cliente cliente;
 
-    public HistoricoCliente(Long idUsuario) {
-        HistoricoCliente.idUsuario = idUsuario;
+    public HistoricoCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public HistoricoCliente() {
@@ -32,7 +33,7 @@ public class HistoricoCliente extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         HistoricoClienteController historico = new HistoricoClienteController();
-        historico.setarIdUsuario(this.idUsuario);
+        historico.setCliente(this.cliente);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/blueFire/view/FXML_HISTORICO_CLIENTE.fxml"));
         Parent root = (Parent) loader.load();

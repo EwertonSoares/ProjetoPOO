@@ -40,13 +40,13 @@ public class DadoClienteController implements Initializable {
     private TextField txtNumero;
 
     private final Utils utils = new Utils();
-    private static Long idUsuario;
+    private static Cliente clienteAtual;
     private Cliente cliente;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Cliente novoCliente = new Cliente();
-        this.cliente = novoCliente.consultaPerfil(DadoClienteController.idUsuario);
+        this.cliente = novoCliente.consultaPerfil(clienteAtual.getIdUsuario());
 
         this.txtNome.setText(cliente.getNome().toUpperCase());
         this.txtSobrenome.setText(cliente.getSobrenome().toUpperCase());
@@ -88,8 +88,8 @@ public class DadoClienteController implements Initializable {
         }
     }
 
-    public void setarIdUsuario(Long idUsuario) {
-        DadoClienteController.idUsuario = idUsuario;
+    public void setCliente(Cliente cliente) {
+       this.clienteAtual = cliente;
     }
 
 }
