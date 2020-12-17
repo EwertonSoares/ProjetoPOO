@@ -5,7 +5,6 @@
  */
 package blueFire;
 
-import blueFire.controller.VeiculoController;
 import blueFire.controller.VeiculoReservadoController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

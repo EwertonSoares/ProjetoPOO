@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author CIANDT\ewerton
  */
-public class InformacoesGerais {
+public class Reserva {
 
     private Cliente cliente;
     private Veiculo veiculo;
@@ -19,7 +19,7 @@ public class InformacoesGerais {
     private Date DataDevolucao;
     private boolean retirado;
 
-    public InformacoesGerais(Cliente cliente, Veiculo veiculo, Date DataLocacao, Date DataDevolucao, boolean retirado) {
+    public Reserva(Cliente cliente, Veiculo veiculo, Date DataLocacao, Date DataDevolucao, boolean retirado) {
         this.cliente = cliente;
         this.veiculo = veiculo;
         this.DataLocacao = DataLocacao;
@@ -27,7 +27,7 @@ public class InformacoesGerais {
         this.retirado = retirado;
     }
 
-    public InformacoesGerais() {
+    public Reserva() {
     }
 
     public Cliente getCliente() {
@@ -81,10 +81,10 @@ public class InformacoesGerais {
                 +"\n\nDADOS DO VEICULO:\n" +"  Nome: "+ this.veiculo.getNome() + "\n" 
                 +"  Cor: "+ this.veiculo.getCor() + "\n" +"  Ano:"+ this.veiculo.getAno() + "\n"
                 +"  Placa: "+ this.veiculo.getPlaca() + "\n"+ "  Valor p/ dia: "+ this.veiculo.getValorLocacao() +"\n"
-                +"  Qtd dias locação: "+ this.veiculo.getQtd() +"\n"
+                +"  Qtd dias locação: "+ this.veiculo.getQtdDiasLocacao() +"\n"
                 + "\n\nData da reserva: " + this.getDataLocacao() + "\n"
                 +"Data prevista\np/ devolução: " + this.getDataDevolucao() + "\n"
-                +"Retirado: " + retirado;
+               +"Retirado: " + retirado;
     }
 
 }

@@ -18,17 +18,17 @@ public class Veiculo {
     private Long ano;
     private String nome;
     private String cor;
-    private int qtd;
+    private int qtdDiasLocacao;
     private float valorLocacao;
 
-    public Veiculo(String placa, Long ano, String nome, String cor, Long id, int qtd, float valorLocacao) {
+    public Veiculo(String placa, Long ano, String nome, String cor, Long id, int qtdDiasLocacao, float valorLocacao) {
         this.placa = placa;
         this.ano = ano;
         this.nome = nome;
         this.cor = cor;
         this.id = id;
         this.valorLocacao = valorLocacao;
-        this.qtd = qtd;
+        this.qtdDiasLocacao = qtdDiasLocacao;
     }
 
     public Veiculo() {
@@ -75,12 +75,12 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public int getQtd() {
-        return qtd;
+    public int getQtdDiasLocacao() {
+        return qtdDiasLocacao;
     }
 
-    public void setQtd(int qtd) {
-        this.qtd = qtd;
+    public void setQtdDiasLocacao(int qtdDiasLocacao) {
+        this.qtdDiasLocacao = qtdDiasLocacao;
     }
 
     public float getValorLocacao() {
@@ -95,7 +95,7 @@ public class Veiculo {
     @Override
     public String toString() {
 
-        if (qtd == 0) {
+        if (qtdDiasLocacao == 0) {
             return this.getNome() + "  " + this.getCor() + "\n"
                     + "Ano: " + this.getAno()
                     + "\nValor p/ dia: " + "" + this.getValorLocacao();
@@ -105,7 +105,7 @@ public class Veiculo {
                 + "Cor: " + cor + "\n\n"
                 + "Placa: " + placa + "\n"
                 + "Ano: " + ano + "\n\n"
-                + "Qtd dias: " + qtd + "\n"
+                + "Qtd dias: " + qtdDiasLocacao + "\n"
                 + "Diaria: " + valorLocacao + "\n\n";
 
     }

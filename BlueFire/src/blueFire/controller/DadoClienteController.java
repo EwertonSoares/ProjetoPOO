@@ -5,7 +5,6 @@
  */
 package blueFire.controller;
 
-import blueFire.model.dao.DadoClienteDAO;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Endereco;
 import blueFire.utils.Utils;
@@ -40,14 +39,14 @@ public class DadoClienteController implements Initializable {
     @FXML
     private TextField txtNumero;
 
-    private final DadoClienteDAO dadosCliente = new DadoClienteDAO();
     private final Utils utils = new Utils();
     private static Long idUsuario;
     private Cliente cliente;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.cliente = this.dadosCliente.carregarDadosCliente(DadoClienteController.idUsuario);
+        Cliente novoCliente = new Cliente();
+        this.cliente = novoCliente.consultaPerfil(DadoClienteController.idUsuario);
 
         this.txtNome.setText(cliente.getNome().toUpperCase());
         this.txtSobrenome.setText(cliente.getSobrenome().toUpperCase());
@@ -77,7 +76,8 @@ public class DadoClienteController implements Initializable {
         endereco.setNumero(Long.parseLong(this.txtNumero.getText()));
         cliente.setEndereco(endereco);
 
-        boolean atualizado = this.dadosCliente.autualizaDadosCliente(this.cliente);
+        Cliente novoCliente = new Cliente();
+        boolean atualizado = novoCliente.autualizaDadosCliente(this.cliente);
 
         if (atualizado) {
             utils.showAlert("Sucesso!", "Dados salvos!!!", "Seus dados foram "

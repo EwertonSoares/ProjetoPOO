@@ -5,7 +5,7 @@
  */
 package blueFire.controller;
 
-import blueFire.model.dao.HistoricoClienteDAO;
+import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
 import blueFire.utils.Utils;
 import java.net.URL;
@@ -30,12 +30,12 @@ public class HistoricoClienteController implements Initializable {
     private Button btnVoltar;
 
     private ObservableList<Veiculo> oblVeiculos;
-    HistoricoClienteDAO historico = new HistoricoClienteDAO();
     private static Long idUsuario;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List<Veiculo> lista = historico.pegarHistoricoCliente(this.idUsuario);
+        Cliente cliente = new Cliente();
+        List<Veiculo> lista = cliente.consultarHistoricoReserva(idUsuario); 
 
         this.oblVeiculos = FXCollections.observableArrayList(lista);
         this.lvHistorico.setItems(oblVeiculos);

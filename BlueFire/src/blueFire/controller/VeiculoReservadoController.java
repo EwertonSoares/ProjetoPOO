@@ -5,10 +5,10 @@
  */
 package blueFire.controller;
 
-import blueFire.TelaVeiculo;
-import blueFire.model.dao.VeiculoReservadoDAO;
+import blueFire.VeiculoReservado;
+import blueFire.model.domain.impl.Administrador;
 import blueFire.model.domain.impl.Cliente;
-import blueFire.model.domain.impl.InformacoesGerais;
+import blueFire.model.domain.impl.Reserva;
 import blueFire.utils.Utils;
 import java.net.URL;
 import java.util.List;
@@ -29,18 +29,18 @@ import javafx.stage.Stage;
  */
 public class VeiculoReservadoController implements Initializable {
 
-    VeiculoReservadoDAO veiculoReservadoDAO = new VeiculoReservadoDAO();
-    Utils utils = new Utils();
-    Cliente cliente;
+    private final Administrador administrador = new Administrador();
+    private final Utils utils = new Utils();
+    private Cliente cliente;
 
     @FXML
     private Button btnFechar;
     @FXML
-    private ListView<InformacoesGerais> lvVeiculos;
+    private ListView<Reserva> lvVeiculos;
     @FXML
     private Button btnRecarregar;
 
-    private ObservableList<InformacoesGerais> oblVeiculos;
+    private ObservableList<Reserva> oblVeiculos;
     private static Long idUsuario;
 
     /**
@@ -51,7 +51,7 @@ public class VeiculoReservadoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<InformacoesGerais> lista = this.veiculoReservadoDAO.listarVeiculosRservados();
+        List<Reserva> lista = administrador.pegarListaVeiculosReservados();
 
         this.oblVeiculos = FXCollections.observableArrayList(lista);
         this.lvVeiculos.setItems(oblVeiculos);
@@ -59,20 +59,36 @@ public class VeiculoReservadoController implements Initializable {
 
     @FXML
     public void foiRetirado() throws Exception {
-        InformacoesGerais geral = (InformacoesGerais) this.lvVeiculos.getSelectionModel().getSelectedItem();
+        Reserva geral = (Reserva) this.lvVeiculos.getSelectionModel().getSelectedItem();
 
-        boolean done = this.veiculoReservadoDAO.retiraVeiculo(geral.getVeiculo().getId());
+        boolean done = this.administrador.confirmaRetiradaVeiculo(geral.getVeiculo().getId());
 
         if (done) {
-            utils.showAlert("Sucesso", "Vericulo retirado!", "Veiculo foi retirado!", Alert.AlertType.INFORMATION);
+            utils.showAlert("Sucesso", "Vericulo retirado!",
+                    "Veiculo foi retirado!", Alert.AlertType.INFORMATION);
         } else {
-            utils.showAlert("Erro", "Vericulo não retirado!", "Não foi possivel permitir"
-                    + "\na retirada do veiculo.", Alert.AlertType.ERROR);
+            utils.showAlert("Erro", "Vericulo não retirado!", "Erro inesperado"
+                    + "\na retirada do veiculo com sucesso.", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
-    public void fechar() {
+    public void foiDevolvido() throws Exception {
+        Reserva geral = (Reserva) this.lvVeiculos.getSelectionModel().getSelectedItem();
+
+        boolean done = this.administrador.devolveVeiculo(geral.getVeiculo().getId());
+
+        if (done) {
+            utils.showAlert("Sucesso", "Vericulo devolvido!",
+                    "Veiculo foi devolvido com sucesso!!!", Alert.AlertType.INFORMATION);
+        } else {
+            utils.showAlert("Erro", "Vericulo não devolvido!", "Erro inesperado"
+                    + "\na devolução do veiculo.", Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    public void voltar() {
         utils.fecharJanela(this.btnFechar);
     }
 
@@ -81,7 +97,7 @@ public class VeiculoReservadoController implements Initializable {
         Stage stage = (Stage) this.btnRecarregar.getScene().getWindow();
         stage.close();
 
-        TelaVeiculo Veiculo = new TelaVeiculo();
+        VeiculoReservado Veiculo = new VeiculoReservado();
         Veiculo.start(new Stage());
     }
 

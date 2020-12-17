@@ -17,12 +17,22 @@
                </image>
             </ImageView>
             <ListView fx:id="lvVeiculos" layoutX="11.0" layoutY="66.0" prefHeight="367.0" prefWidth="247.0" styleClass="listView" stylesheets="@../style/style.css" />
-            <Button layoutX="152.0" layoutY="445.0" mnemonicParsing="false" onAction="#foiRetirado" prefHeight="43.0" prefWidth="106.0" styleClass="botao" stylesheets="@../style/style.css" text="Liberar&#10;veiculo" />
+            <Button layoutX="176.0" layoutY="448.0" mnemonicParsing="false" onAction="#foiRetirado" prefHeight="43.0" prefWidth="82.0" styleClass="botao" stylesheets="@../style/style.css" text="Liberar&#10;veiculo" />
             <Button fx:id="btnRecarregar" layoutX="215.0" layoutY="2.0" mnemonicParsing="false" onAction="#recarregarJanela" prefHeight="37.0" prefWidth="41.0" style="-fx-background-radius: 50px; -fx-background-color: white;">
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../src/reload.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="86.0" layoutY="448.0" mnemonicParsing="false" onAction="#foiDevolvido" prefHeight="43.0" prefWidth="82.0" styleClass="botao" stylesheets="@../style/style.css" text="Devolver&#10;veiculo" />
+            <Button fx:id="btnVoltar" layoutX="4.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" prefHeight="37.0" prefWidth="68.0" style="-fx-cursor: hand; -fx-background-radius: 50px; -fx-background-color: white;">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../src/voltar.png" />
                      </image>
                   </ImageView>
                </graphic>

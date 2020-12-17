@@ -6,9 +6,11 @@
 package blueFire.model.domain.impl;
 
 import blueFire.model.dao.ClienteDAO;
+import blueFire.model.dao.DadoClienteDAO;
+import blueFire.model.dao.HistoricoClienteDAO;
 import blueFire.model.dao.LoginDAO;
 import blueFire.model.domain.UsuarioLogado;
-import blueFire.utils.Utils;
+import java.util.List;
 
 /**
  *
@@ -17,15 +19,17 @@ import blueFire.utils.Utils;
 public final class Cliente extends Pessoa implements UsuarioLogado {
 
     private final ClienteDAO clienteDao = new ClienteDAO();
+    private final DadoClienteDAO dadosCliente = new DadoClienteDAO();
+    private final HistoricoClienteDAO historico = new HistoricoClienteDAO();
 
     private Long idUsuario;
     private String email;
     private String senha;
 
-    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco, 
+    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco,
             String email, Long idUsuario) {
         super(nome, sobrenome, telefone, endereco);
-        
+
         this.email = email;
         this.idUsuario = idUsuario;
     }
@@ -46,7 +50,7 @@ public final class Cliente extends Pessoa implements UsuarioLogado {
     public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
-    
+
     public String getEmail() {
         return email;
     }
@@ -69,13 +73,19 @@ public final class Cliente extends Pessoa implements UsuarioLogado {
         return logar.checkarLoginESenha(email, senha, "user");
     }
 
-    public boolean fazerReserva(Long idUsuario, Long idVeiculo, int qtd, String dataInicio) {
-        Utils utils = new Utils();
-
-        boolean done;
-        done = this.clienteDao.reservarVeiculo(idUsuario, idVeiculo, qtd, dataInicio);
-
-        return done;
+    public boolean fazerReserva(Long idUsu, Long idVei, int qtd, String dataInicio) {
+        return this.clienteDao.reservarVeiculo(idUsu, idVei, qtd, dataInicio);
     }
 
+    public List<Veiculo> consultarHistoricoReserva(Long id) {
+        return this.historico.pegarHistoricoCliente(id);
+    }
+
+    public Cliente consultaPerfil(Long id) {
+        return this.dadosCliente.carregarDadosCliente(id);
+    }
+
+    public boolean autualizaDadosCliente(Cliente cliente) {
+        return this.dadosCliente.autualizaDadosCliente(cliente);
+    }
 }
