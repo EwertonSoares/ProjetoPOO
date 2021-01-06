@@ -8,7 +8,7 @@ package blueFire;
 import blueFire.controller.ConfirmaController;
 import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Veiculo;
-import java.time.LocalDate;
+import java.sql.Date;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,11 +23,11 @@ public class Confirma extends Application {
 
     private final Cliente cliente;
     private final Veiculo veiculo;
-    private final LocalDate dataInicio;
-    private final LocalDate dataFim;
+    private final Date dataInicio;
+    private final Date dataFim;
     private final int qtdDias;
 
-    public Confirma(Cliente cliente, Veiculo veiculo, int dias, LocalDate dataInicio, LocalDate dataFim) {
+    public Confirma(Cliente cliente, Veiculo veiculo, int dias, Date dataInicio, Date dataFim) {
         this.cliente = cliente;
         this.veiculo = veiculo;
         this.qtdDias = dias;

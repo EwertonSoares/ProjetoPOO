@@ -12,7 +12,6 @@ import blueFire.utils.Utils;
 import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,8 +55,8 @@ public class ConfirmaController implements Initializable {
     private static Cliente clienteAtual;
     private static Veiculo veiculo;
     private static int qtdDias;
-    private static LocalDate dataInicio;
-    private static LocalDate dataFim;
+    private static Date dataInicio;
+    private static Date dataFim;
 
     /**
      * Initializes the controller class.
@@ -81,10 +80,10 @@ public class ConfirmaController implements Initializable {
     @FXML
     private void confirma() throws ParseException {        
         Reserva reserva = new Reserva();
-        reserva.setCliente(this.clienteAtual);
-        reserva.setVeiculo(this.veiculo);
-        reserva.setQtdDias(this.qtdDias);  
-        reserva.setDataLocacao(this.dataInicio);
+        reserva.setCliente(ConfirmaController.clienteAtual);
+        reserva.setVeiculo(ConfirmaController.veiculo);
+        reserva.setQtdDias(ConfirmaController.qtdDias);  
+        reserva.setDataLocacao(ConfirmaController.dataInicio);
         
         boolean reservado = cliente.fazerReserva(reserva);
 
@@ -108,11 +107,11 @@ public class ConfirmaController implements Initializable {
         ConfirmaController.qtdDias = qtdDias;
     }
 
-    public static void setDataInicio(LocalDate dataInicio) {
+    public static void setDataInicio(Date dataInicio) {
         ConfirmaController.dataInicio = dataInicio;
     }
 
-    public static void setDataFim(LocalDate dataFim) {
+    public static void setDataFim(Date dataFim) {
         ConfirmaController.dataFim = dataFim;
     }
 

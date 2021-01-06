@@ -5,7 +5,8 @@
  */
 package blueFire.model.domain.impl;
 
-import java.time.LocalDate;
+import java.sql.Date;
+
 
 
 /**
@@ -17,11 +18,11 @@ public class Reserva {
     private Cliente cliente;
     private Veiculo veiculo;
     private int qtdDias;
-    private LocalDate DataLocacao;
-    private LocalDate DataDevolucao;
+    private Date DataLocacao;
+    private Date DataDevolucao;
     private boolean retirado;
 
-    public Reserva(Cliente cliente, Veiculo veiculo, int qtdDias, LocalDate DataLocacao, LocalDate DataDevolucao, boolean retirado) {
+    public Reserva(Cliente cliente, Veiculo veiculo, int qtdDias, Date DataLocacao, Date DataDevolucao, boolean retirado) {
         this.cliente = cliente;
         this.veiculo = veiculo;
         this.qtdDias = qtdDias;
@@ -57,19 +58,19 @@ public class Reserva {
         this.qtdDias = qtdDias;
     }
     
-    public LocalDate getDataLocacao() {
+    public Date getDataLocacao() {
         return DataLocacao;
     }
 
-    public void setDataLocacao(LocalDate DataLocacao) {
+    public void setDataLocacao(Date DataLocacao) {
         this.DataLocacao = DataLocacao;
     }
 
-    public LocalDate getDataDevolucao() {
+    public Date getDataDevolucao() {
         return DataDevolucao;
     }
 
-    public void setDataDevolucao(LocalDate DataDevolucao) {
+    public void setDataDevolucao(Date DataDevolucao) {
         this.DataDevolucao = DataDevolucao;
     }
 

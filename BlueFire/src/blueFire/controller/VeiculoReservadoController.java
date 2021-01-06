@@ -7,7 +7,6 @@ package blueFire.controller;
 
 import blueFire.VeiculoReservado;
 import blueFire.model.domain.impl.Administrador;
-import blueFire.model.domain.impl.Cliente;
 import blueFire.model.domain.impl.Reserva;
 import blueFire.utils.Utils;
 import java.net.URL;
@@ -31,7 +30,6 @@ public class VeiculoReservadoController implements Initializable {
 
     private final Administrador administrador = new Administrador();
     private final Utils utils = new Utils();
-    private Cliente cliente;
 
     @FXML
     private Button btnFechar;
@@ -51,10 +49,10 @@ public class VeiculoReservadoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<Reserva> lista = administrador.pegarListaVeiculosReservados();
+        List<Reserva> lista = this.administrador.pegarListaVeiculosReservados();
 
         this.oblVeiculos = FXCollections.observableArrayList(lista);
-        this.lvVeiculos.setItems(oblVeiculos);
+        this.lvVeiculos.setItems(this.oblVeiculos);
     }
 
     @FXML

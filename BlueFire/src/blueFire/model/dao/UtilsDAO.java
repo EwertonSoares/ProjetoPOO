@@ -7,6 +7,7 @@ package blueFire.model.dao;
 
 import blueFire.model.database.ConnectionSingleton;
 import blueFire.model.domain.impl.Cliente;
+import blueFire.model.domain.impl.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,24 +27,27 @@ public class UtilsDAO {
 
         PreparedStatement stmt = null;
         ResultSet result;
+        Endereco endereco = new Endereco();
         Cliente cliente = new Cliente();
 
         try {
 
-            stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE email = ?");
+            stmt = conexao.prepareStatement("CALL buscarCliente(?)");
             stmt.setString(1, email);
 
             result = stmt.executeQuery();
 
             while (result.next()) {
+                endereco.setBairro(result.getString("bairro"));
+                endereco.setRua(result.getString("rua"));
+                endereco.setNumero(result.getLong("numero"));
+                
                 cliente.setIdUsuario(result.getLong("idUsuario"));
                 cliente.setNome(result.getString("nome"));
                 cliente.setSobrenome(result.getString("sobrenome"));
                 cliente.setEmail(result.getString("email"));
-                cliente.getEndereco().setBairro(result.getString("bairro"));
-                cliente.getEndereco().setRua(result.getString("rua"));
-                cliente.getEndereco().setNumero(result.getLong("numero"));
                 cliente.setTelefone(result.getString("telefone"));
+                cliente.setEndereco(endereco);               
             }
 
         } catch (SQLException ex) {

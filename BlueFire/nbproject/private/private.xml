@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ewerton/Área%20de%20Trabalho/ProjetoPOO/BlueFire/src/blueFire/model/domain/impl/Administrador.java</file>
             <file>file:/home/ewerton/Área%20de%20Trabalho/ProjetoPOO/BlueFire/src/blueFire/model/domain/impl/Cliente.java</file>
-            <file>file:/home/ewerton/Área%20de%20Trabalho/ProjetoPOO/BlueFire/src/blueFire/model/domain/impl/Pessoa.java</file>
-            <file>file:/home/ewerton/Área%20de%20Trabalho/ProjetoPOO/BlueFire/src/blueFire/model/domain/impl/Reserva.java</file>
+            <file>file:/home/ewerton/Área%20de%20Trabalho/ProjetoPOO/BlueFire/src/blueFire/model/dao/ClienteDAO.java</file>
         </group>
     </open-files>
 </project-private>

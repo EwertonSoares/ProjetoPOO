@@ -11,7 +11,6 @@ import blueFire.utils.Utils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +35,7 @@ public class ClienteDAO {
             stmt.setLong(1, reserva.getCliente().getIdUsuario());
             stmt.setLong(2, reserva.getVeiculo().getId());
             stmt.setInt(3, reserva.getQtdDias());                  
-            stmt.setString(4, reserva.getDataLocacao().now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")));
+            stmt.setDate(4, reserva.getDataLocacao());
             check = stmt.execute();
 
             if (!check) {

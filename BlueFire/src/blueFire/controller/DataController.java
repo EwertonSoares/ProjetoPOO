@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import blueFire.utils.Utils;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import javafx.scene.control.Button;
@@ -93,8 +94,21 @@ public class DataController implements Initializable {
   
     private void abrirTelaDeConfirmacao(int dias) throws Exception {
 
-        LocalDate dataInicio = this.dpInicio.getValue();
-        LocalDate dataFim = this.dpFim.getValue();
+        
+        LocalDate dI = this.dpInicio.getValue();
+        Date dataInicio = Date.valueOf(dI);
+        
+        LocalDate dF = this.dpFim.getValue();
+        Date dataFim = Date.valueOf(dF);
+        
+        System.out.println("Data Inicio: " + dataInicio);
+        System.out.print("É do tipo Date? ");
+        System.out.println(dataInicio instanceof Date);
+        
+        System.out.println("Data Fim: " + dataFim);
+        System.out.print("É do tipo Date? ");
+        System.out.println(dataFim instanceof Date);
+
 
         Confirma confirma = new Confirma(this.getCliente(), this.getVeiculo(), dias, dataInicio, dataFim);
 
