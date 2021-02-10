@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author CIANDT\ewerton
  */
-public final class Cliente extends Pessoa implements UsuarioLogado {
+public final class Cliente extends Usuario implements UsuarioLogado {
 
     private final ClienteDAO clienteDao = new ClienteDAO();
     private final DadoClienteDAO dadosCliente = new DadoClienteDAO();
@@ -35,12 +35,13 @@ public final class Cliente extends Pessoa implements UsuarioLogado {
     }
 
     public Cliente(String email, String senha) {
+        super(email, senha);
+        
         this.email = email;
         this.senha = senha;
     }
 
     public Cliente() {
-
     }
 
     public Long getIdUsuario() {
@@ -51,26 +52,11 @@ public final class Cliente extends Pessoa implements UsuarioLogado {
         this.idUsuario = idUsuario;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
+ 
     @Override
     public boolean logar() {
         LoginDAO logar = new LoginDAO();
-        return logar.checkarLoginESenha(email, senha, "user");
+        return logar.checkarLoginESenha(this.email, this.senha, "user");
     }
 
     public boolean fazerReserva(Reserva reserva) {

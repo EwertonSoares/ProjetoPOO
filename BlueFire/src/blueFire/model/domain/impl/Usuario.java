@@ -9,20 +9,28 @@ package blueFire.model.domain.impl;
  *
  * @author CIANDT\ewerton
  */
-public abstract class Pessoa {
+public abstract class Usuario {
+
     private String nome;
     private String sobrenome;
     private String telefone;
     private Endereco endereco;
+    private String email;
+    private String senha;
 
-    public Pessoa(String nome, String sobrenome, String telefone, Endereco endereco) {
+    public Usuario(String nome, String sobrenome, String telefone, Endereco endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
         this.endereco = endereco;
     }
 
-    public Pessoa() {
+    public Usuario(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario() {
     }
 
     public String getNome() {
@@ -56,4 +64,21 @@ public abstract class Pessoa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
 }

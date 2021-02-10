@@ -14,13 +14,16 @@ import java.util.List;
  *
  * @author CIANDT\ewerton
  */
-public class Administrador extends Pessoa implements UsuarioLogado {
+public class Administrador extends Usuario implements UsuarioLogado {
 
     private final VeiculoDAO veiculoDAO = new VeiculoDAO();
     private String email;
     private String senha;
 
+
     public Administrador(String email, String senha) {
+        super(email, senha);
+        
         this.email = email;
         this.senha = senha;
     }
@@ -28,26 +31,10 @@ public class Administrador extends Pessoa implements UsuarioLogado {
     public Administrador() {
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     @Override
     public boolean logar() {
         LoginDAO logar = new LoginDAO();
-        return logar.checkarLoginESenha(email, senha, "adm");
+        return logar.checkarLoginESenha(this.email, this.senha, "adm");
     }
 
     public List<Reserva> pegarListaVeiculosReservados() {

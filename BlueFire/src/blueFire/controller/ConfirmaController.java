@@ -26,8 +26,8 @@ import javafx.scene.control.Label;
  */
 public class ConfirmaController implements Initializable {
 
-    private Cliente cliente = new Cliente();
-    private Utils utils = new Utils();
+    private final Cliente cliente = new Cliente();
+    private final Utils utils = new Utils();
     
     @FXML
     private Label lblDtIni;
@@ -85,7 +85,7 @@ public class ConfirmaController implements Initializable {
         reserva.setQtdDias(ConfirmaController.qtdDias);  
         reserva.setDataLocacao(ConfirmaController.dataInicio);
         
-        boolean reservado = cliente.fazerReserva(reserva);
+        boolean reservado = this.cliente.fazerReserva(reserva);
 
         if (reservado) {
             utils.showAlert("Suacesso", "Veiculo reservado!",

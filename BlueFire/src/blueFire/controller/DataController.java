@@ -92,25 +92,14 @@ public class DataController implements Initializable {
     }
     
   
-    private void abrirTelaDeConfirmacao(int dias) throws Exception {
-
-        
+    private void abrirTelaDeConfirmacao(int dias) throws Exception {        
         LocalDate dI = this.dpInicio.getValue();
         Date dataInicio = Date.valueOf(dI);
         
         LocalDate dF = this.dpFim.getValue();
         Date dataFim = Date.valueOf(dF);
-        
-        System.out.println("Data Inicio: " + dataInicio);
-        System.out.print("É do tipo Date? ");
-        System.out.println(dataInicio instanceof Date);
-        
-        System.out.println("Data Fim: " + dataFim);
-        System.out.print("É do tipo Date? ");
-        System.out.println(dataFim instanceof Date);
 
-
-        Confirma confirma = new Confirma(this.getCliente(), this.getVeiculo(), dias, dataInicio, dataFim);
+        Confirma confirma = new Confirma(DataController.getCliente(), DataController.getVeiculo(), dias, dataInicio, dataFim);
 
         confirma.start(new Stage());
 
