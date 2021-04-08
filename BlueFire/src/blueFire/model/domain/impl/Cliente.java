@@ -22,41 +22,20 @@ public final class Cliente extends Usuario implements UsuarioLogado {
     private final DadoClienteDAO dadosCliente = new DadoClienteDAO();
     private final HistoricoClienteDAO historico = new HistoricoClienteDAO();
 
-    private Long idUsuario;
-    private String email;
-    private String senha;
+    private final String email;
+    private final String senha;
 
-    public Cliente(String nome, String sobrenome, String telefone, Endereco endereco,
-            String email, Long idUsuario) {
-        super(nome, sobrenome, telefone, endereco);
+    public Cliente(Long id, String nome, String sobrenome, String telefone, Endereco endereco, String email, String senha) {
+        super(id, nome, sobrenome, telefone, endereco, email, senha);
 
-        this.email = email;
-        this.idUsuario = idUsuario;
-    }
-
-    public Cliente(String email, String senha) {
-        super(email, senha);
-        
         this.email = email;
         this.senha = senha;
     }
 
-    public Cliente() {
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
- 
     @Override
     public boolean logar() {
         LoginDAO logar = new LoginDAO();
-        return logar.checkarLoginESenha(this.email, this.senha, "user");
+        return logar.checkarLoginESenha(email, senha);
     }
 
     public boolean fazerReserva(Reserva reserva) {
@@ -73,5 +52,55 @@ public final class Cliente extends Usuario implements UsuarioLogado {
 
     public boolean autualizaDadosCliente(Cliente cliente) {
         return this.dadosCliente.autualizaDadosCliente(cliente);
+    }
+
+    public static class Builder {
+
+        protected String nome;
+        protected String sobrenome;
+        protected String telefone;
+        protected Endereco endereco;
+        protected String email;
+        protected String senha;
+        protected Long id;
+
+        public Builder nome(String nome) {
+            this.nome = nome;
+            return this;
+        }
+
+        public Builder sobreNome(String sobrenome) {
+            this.sobrenome = sobrenome;
+            return this;
+        }
+
+        public Builder telefone(String telefone) {
+            this.telefone = telefone;
+            return this;
+        }
+
+        public Builder endereco(Endereco endereco) {
+            this.endereco = endereco;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder senha(String senha) {
+            this.senha = senha;
+            return this;
+        }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Cliente buid() {
+            return new Cliente(id, nome, sobrenome, telefone, endereco, email, senha);
+        }
     }
 }

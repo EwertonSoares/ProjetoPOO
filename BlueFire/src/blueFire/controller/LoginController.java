@@ -20,10 +20,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import blueFire.model.domain.UsuarioLogado;
 import blueFire.utils.Utils;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -45,7 +45,7 @@ public class LoginController implements Initializable {
     private TextField txtSenha;
 
     @FXML
-    private Button btnEntrar;
+    private Button btnFechar;
 
     @FXML
     private Hyperlink linkCadastrar;
@@ -54,10 +54,7 @@ public class LoginController implements Initializable {
     private Hyperlink linkEsqueceu;
 
     @FXML
-    private Button btnFechar;
-
-    @FXML
-    private RadioButton rbdAdm;
+    private Label erroText;
 
     /**
      * Initializes the controller class.
@@ -73,10 +70,15 @@ public class LoginController implements Initializable {
     @FXML
     private void logar() {
         try {
-            UsuarioLogado usuario = UsuarioLogadoFactory.criar(this.txtEmail.getText(),
-                    this.txtSenha.getText(), this.rbdAdm.isSelected());
+            UsuarioLogado usuario = UsuarioLogadoFactory
+                    .criar(this.txtEmail.getText(), this.txtSenha.getText());
 
-            facade.logar(usuario);
+            boolean check = tratarErro(facade.logar(usuario));
+
+            if (!check) {
+                return;
+            }
+
             if (usuario instanceof Cliente) {
 
                 PrincipalUser telaPrincipalDeUsuario = new PrincipalUser(this.pegarInfoUsuario());
@@ -97,6 +99,15 @@ public class LoginController implements Initializable {
         UtilsDAO utilsDAO = new UtilsDAO();
         cliente = utilsDAO.buscaCliente(this.txtEmail.getText());
         return cliente;
+    }
+
+    private boolean tratarErro(boolean logar) {
+        if (!logar) {
+            erroText.setVisible(true);
+            return false;
+        }
+
+        return true;
     }
 
     @FXML

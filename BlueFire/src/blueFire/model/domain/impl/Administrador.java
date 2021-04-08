@@ -17,24 +17,20 @@ import java.util.List;
 public class Administrador extends Usuario implements UsuarioLogado {
 
     private final VeiculoDAO veiculoDAO = new VeiculoDAO();
-    private String email;
-    private String senha;
 
+    private final String email;
+    private final String senha;
 
-    public Administrador(String email, String senha) {
-        super(email, senha);
-        
+    public Administrador(Long id, String nome, String sobrenome, String telefone, Endereco endereco, String email, String senha) {
+        super(id, nome, sobrenome, telefone, endereco, email, senha);
         this.email = email;
         this.senha = senha;
-    }
-
-    public Administrador() {
     }
 
     @Override
     public boolean logar() {
         LoginDAO logar = new LoginDAO();
-        return logar.checkarLoginESenha(this.email, this.senha, "adm");
+        return logar.checkarLoginESenha(this.email, this.senha);
     }
 
     public List<Reserva> pegarListaVeiculosReservados() {
@@ -47,6 +43,56 @@ public class Administrador extends Usuario implements UsuarioLogado {
 
     public boolean devolveVeiculo(Long id) {
         return this.veiculoDAO.devolverVeiculo(id);
+    }
+
+    public static class Builder {
+
+        protected String nome;
+        protected String sobrenome;
+        protected String telefone;
+        protected Endereco endereco;
+        protected String email;
+        protected String senha;
+        protected Long id;
+
+        public Builder nome(String nome) {
+            this.nome = nome;
+            return this;
+        }
+
+        public Builder sobreNome(String sobrenome) {
+            this.sobrenome = sobrenome;
+            return this;
+        }
+
+        public Builder telefone(String telefone) {
+            this.telefone = telefone;
+            return this;
+        }
+
+        public Builder endereco(Endereco endereco) {
+            this.endereco = endereco;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder senha(String senha) {
+            this.senha = senha;
+            return this;
+        }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Administrador buid() {
+            return new Administrador(id, nome, sobrenome, telefone, endereco, email, senha);
+        }
     }
 
 }

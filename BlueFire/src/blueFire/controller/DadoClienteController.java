@@ -41,12 +41,12 @@ public class DadoClienteController implements Initializable {
 
     private final Utils utils = new Utils();
     private static Cliente clienteAtual;
-    private Cliente cliente;
+    private Cliente cliente = new Cliente.Builder().buid();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Cliente novoCliente = new Cliente();
-        this.cliente = novoCliente.consultaPerfil(clienteAtual.getIdUsuario());
+//        Cliente novoCliente = new Cliente.Builder().buid();
+        this.cliente = cliente.consultaPerfil(clienteAtual.getId());
 
         this.txtNome.setText(cliente.getNome().toUpperCase());
         this.txtSobrenome.setText(cliente.getSobrenome().toUpperCase());
@@ -66,18 +66,19 @@ public class DadoClienteController implements Initializable {
     @FXML
     private void salvar() {
         Endereco endereco = new Endereco();
-
-        cliente.setNome(this.txtNome.getText().toLowerCase());
-        cliente.setSobrenome(this.txtSobrenome.getText().toLowerCase());
-        cliente.setEmail(this.txtEmail.getText().toLowerCase());
-        cliente.setTelefone(this.txtTelefone.getText().toLowerCase());
         endereco.setBairro(this.txtBairro.getText().toLowerCase());
         endereco.setRua(this.txtRua.getText().toLowerCase());
         endereco.setNumero(Long.parseLong(this.txtNumero.getText()));
-        cliente.setEndereco(endereco);
 
-        Cliente novoCliente = new Cliente();
-        boolean atualizado = novoCliente.autualizaDadosCliente(this.cliente);
+        Cliente novoCliente = new Cliente.Builder()
+                .nome(this.txtNome.getText().toLowerCase())
+                .sobreNome(this.txtSobrenome.getText().toLowerCase())
+                .email(this.txtEmail.getText().toLowerCase())
+                .telefone(this.txtTelefone.getText().toLowerCase())
+                .endereco(endereco)
+                .buid();
+
+        boolean atualizado = cliente.autualizaDadosCliente(novoCliente);
 
         if (atualizado) {
             utils.showAlert("Sucesso!", "Dados salvos!!!", "Seus dados foram "
@@ -89,7 +90,7 @@ public class DadoClienteController implements Initializable {
     }
 
     public void setCliente(Cliente cliente) {
-       this.clienteAtual = cliente;
+        this.clienteAtual = cliente;
     }
 
 }

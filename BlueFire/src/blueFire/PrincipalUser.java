@@ -19,10 +19,10 @@ import javafx.stage.Stage;
  */
 public class PrincipalUser extends Application {
 
-    private static Cliente cliente;
+    private final Cliente cliente;
 
     public PrincipalUser(Cliente cliente) {
-        PrincipalUser.cliente = cliente;
+        this.cliente = cliente;
     }
 
     @Override

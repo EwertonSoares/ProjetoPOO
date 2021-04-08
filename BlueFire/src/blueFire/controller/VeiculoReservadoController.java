@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  */
 public class VeiculoReservadoController implements Initializable {
 
-    private final Administrador administrador = new Administrador();
+    private final Administrador administrador = new Administrador.Builder().buid();
     private final Utils utils = new Utils();
 
     @FXML

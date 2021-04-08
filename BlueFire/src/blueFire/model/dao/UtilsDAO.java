@@ -25,10 +25,10 @@ public class UtilsDAO {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
 
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
         ResultSet result;
         Endereco endereco = new Endereco();
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente.Builder().buid();
 
         try {
 
@@ -41,13 +41,15 @@ public class UtilsDAO {
                 endereco.setBairro(result.getString("bairro"));
                 endereco.setRua(result.getString("rua"));
                 endereco.setNumero(result.getLong("numero"));
-                
-                cliente.setIdUsuario(result.getLong("idUsuario"));
-                cliente.setNome(result.getString("nome"));
-                cliente.setSobrenome(result.getString("sobrenome"));
-                cliente.setEmail(result.getString("email"));
-                cliente.setTelefone(result.getString("telefone"));
-                cliente.setEndereco(endereco);               
+
+                cliente = new Cliente.Builder()
+                        .id(result.getLong("idUsuario"))
+                        .nome(result.getString("nome"))
+                        .sobreNome(result.getString("sobrenome"))
+                        .email(result.getString("email"))
+                        .telefone(result.getString("telefone"))
+                        .endereco(endereco)
+                        .buid();
             }
 
         } catch (SQLException ex) {

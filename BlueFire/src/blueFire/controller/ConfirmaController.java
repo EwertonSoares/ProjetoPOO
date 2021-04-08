@@ -26,7 +26,7 @@ import javafx.scene.control.Label;
  */
 public class ConfirmaController implements Initializable {
 
-    private final Cliente cliente = new Cliente();
+    private final Cliente cliente = new Cliente.Builder().buid();
     private final Utils utils = new Utils();
     
     @FXML

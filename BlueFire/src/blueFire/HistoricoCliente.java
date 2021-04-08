@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  */
 public class HistoricoCliente extends Application {
 
-    private static Cliente cliente;
+    private  Cliente cliente;
 
     public HistoricoCliente(Cliente cliente) {
         this.cliente = cliente;
@@ -32,8 +32,7 @@ public class HistoricoCliente extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        HistoricoClienteController historico = new HistoricoClienteController();
-        historico.setCliente(this.cliente);
+        HistoricoClienteController historico = new HistoricoClienteController(this.cliente);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/blueFire/view/FXML_HISTORICO_CLIENTE.fxml"));
         Parent root = (Parent) loader.load();

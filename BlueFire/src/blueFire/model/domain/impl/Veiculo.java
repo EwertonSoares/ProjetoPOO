@@ -5,8 +5,6 @@
  */
 package blueFire.model.domain.impl;
 
-import javafx.scene.control.CheckBox;
-
 /**
  *
  * @author CIANDT\ewerton

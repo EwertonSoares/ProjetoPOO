@@ -21,19 +21,17 @@ public class LoginDAO {
     ConnectionSingleton connSing = ConnectionSingleton.getInstance();
     Connection conexao = connSing.connect();
     
-    public boolean checkarLoginESenha(String login, String senha, String tipo) {
+    public boolean checkarLoginESenha(String login, String senha) {
         
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
         ResultSet result;
         try  {
 
             stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE email = ? "
-                    + "AND senha = ? "
-                    + "AND tipo = ?");
+                    + "AND senha = ? ");
 
             stmt.setString(1, login);
             stmt.setString(2, senha);
-            stmt.setString(3, tipo);
 
             result = stmt.executeQuery();
 

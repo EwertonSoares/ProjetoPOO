@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -11,17 +15,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="275.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blueFire.controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="275.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blueFire.controller.LoginController">
    <children>
       <Pane layoutX="3.0" layoutY="3.0" prefHeight="525.0" prefWidth="269.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 30px;">
          <children>
-            <TextField fx:id="txtEmail" layoutX="33.0" layoutY="262.0" prefHeight="37.0" prefWidth="202.0" style="-fx-border-color: black;" />
-            <Button fx:id="btnEntrar" layoutX="161.0" layoutY="394.0" mnemonicParsing="false" onAction="#logar" prefHeight="37.0" prefWidth="74.0" text="Entrar" />
-            <Hyperlink fx:id="linkCadastrar" layoutX="29.0" layoutY="359.0" prefHeight="24.0" prefWidth="81.0" text="Cadastrar" textFill="#131413" underline="true" />
-            <Hyperlink fx:id="linkEsqueceu" layoutX="110.0" layoutY="359.0" prefHeight="24.0" prefWidth="131.0" text="Esqueceu a senha" textFill="#131413" underline="true" />
-            <Label layoutX="36.0" layoutY="246.0" prefHeight="16.0" prefWidth="81.0" text="Email" />
-            <Label layoutX="35.0" layoutY="307.0" prefHeight="16.0" prefWidth="81.0" text="Senha" />
-            <ImageView fitHeight="148.0" fitWidth="247.0" layoutX="60.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="txtEmail" layoutX="33.0" layoutY="282.0" prefHeight="37.0" prefWidth="202.0" style="-fx-border-color: black;" />
+            <Button layoutX="32.0" layoutY="426.0" mnemonicParsing="false" onAction="#logar" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: darkblue;" text="Entrar" textFill="WHITE" />
+            <Hyperlink fx:id="linkCadastrar" layoutX="29.0" layoutY="379.0" prefHeight="24.0" prefWidth="81.0" text="Cadastrar" textFill="#131413" underline="true" />
+            <Hyperlink fx:id="linkEsqueceu" layoutX="110.0" layoutY="379.0" prefHeight="24.0" prefWidth="131.0" text="Esqueceu a senha" textFill="#131413" underline="true" />
+            <Label layoutX="36.0" layoutY="266.0" prefHeight="16.0" prefWidth="81.0" text="Email" />
+            <Label layoutX="35.0" layoutY="327.0" prefHeight="16.0" prefWidth="81.0" text="Senha" />
+            <ImageView fitHeight="148.0" fitWidth="247.0" layoutX="60.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/perfil.png" />
                </image></ImageView>
@@ -29,8 +33,8 @@
                <image>
                   <Image url="@../src/logo.png" />
                </image></ImageView>
-            <RadioButton fx:id="rbdAdm" layoutX="34.0" layoutY="403.0" mnemonicParsing="false" text="Administrador" />
-            <PasswordField fx:id="txtSenha" layoutX="32.0" layoutY="323.0" prefHeight="37.0" prefWidth="202.0" style="-fx-border-color: black;" />
+            <PasswordField fx:id="txtSenha" layoutX="32.0" layoutY="343.0" prefHeight="37.0" prefWidth="202.0" style="-fx-border-color: black;" />
+            <Label fx:id="erroText" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="243.0" prefHeight="15.0" prefWidth="202.0" style="visibility: false;" text="Login ou senha invalido" textAlignment="JUSTIFY" textFill="#f50303" />
          </children>
       </Pane>
    </children>

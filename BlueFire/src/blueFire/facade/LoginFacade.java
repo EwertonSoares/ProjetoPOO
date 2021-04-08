@@ -13,11 +13,9 @@ import blueFire.model.domain.UsuarioLogado;
  */
 public class LoginFacade {
     
-    public void logar(UsuarioLogado usuario) throws Exception {
+    public boolean logar(UsuarioLogado usuario) {
         
-        if(!usuario.logar()){
-            throw new Exception("Login invalido");
-        }
+        return usuario.logar();
     }
     
 }

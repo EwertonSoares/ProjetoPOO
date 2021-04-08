@@ -68,7 +68,7 @@ public class VeiculoDAO {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
 
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
         ResultSet result;
         List<Reserva> lista = new ArrayList();
 
@@ -88,7 +88,7 @@ public class VeiculoDAO {
                 String email = result.getString("email");
 
                 Endereco endereco = new Endereco(rua, numero, bairro);
-                Cliente cliente = new Cliente(nome, sobreNome, telefone, endereco, email, null);
+                Cliente cliente = new Cliente(null, nome, sobreNome, telefone, endereco, email, null);
 
                 String placa = result.getString("placa");
                 Long ano = result.getLong("ano");

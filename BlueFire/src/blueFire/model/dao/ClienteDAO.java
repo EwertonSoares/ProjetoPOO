@@ -26,13 +26,13 @@ public class ClienteDAO {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
 
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
         boolean check = false;
 
         try {
 
             stmt = conexao.prepareStatement("CALL reservarVeiculo(?,?,?,?);");
-            stmt.setLong(1, reserva.getCliente().getIdUsuario());
+            stmt.setLong(1, reserva.getCliente().getId());
             stmt.setLong(2, reserva.getVeiculo().getId());
             stmt.setInt(3, reserva.getQtdDias());                  
             stmt.setDate(4, reserva.getDataLocacao());

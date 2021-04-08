@@ -25,9 +25,9 @@ public class DadoClienteDAO {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
 
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
         ResultSet result;
-        Cliente dadosCliente = new Cliente();
+        Cliente dadosCliente = new Cliente.Builder().buid();
 
         try {
 
@@ -47,7 +47,7 @@ public class DadoClienteDAO {
                 String bairro = result.getString("bairro");
 
                 Endereco endereco = new Endereco(rua, numero, bairro);
-                Cliente cliente = new Cliente(nome, sobrenome, telefone, endereco, email, idUsuario);
+                Cliente cliente = new Cliente(idUsuario, nome, sobrenome, telefone, endereco, email, null);
 
                 dadosCliente = cliente;
             }
@@ -65,13 +65,13 @@ public class DadoClienteDAO {
         ConnectionSingleton connSing = ConnectionSingleton.getInstance();
         Connection conexao = connSing.connect();
 
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
 
         try {
 
             stmt = conexao.prepareStatement("CALL atualizaDadosCliente(?,?,?,?,?,?,?,?);");
 
-            stmt.setLong(1, cliente.getIdUsuario());
+            stmt.setLong(1, cliente.getId());
             stmt.setString(2, cliente.getNome());
             stmt.setString(3, cliente.getSobrenome());
             stmt.setString(4, cliente.getEmail());
